@@ -4,8 +4,8 @@ defprotocol Quark.Ordinal do
 
   @doc ~S"""
   """
-  @spec zero?(any) :: any
-  def zeroth?(element)
+  @spec zeroth(any) :: any
+  def zeroth(specimen)
 
   @doc ~S"""
   Increment position in an ordinal collection
