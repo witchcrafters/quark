@@ -42,7 +42,7 @@ defmodule Quark.Classic.FixedPoint do
   A strictly non-standard fixed-point combinator
   """
   @spec n((... -> any)) :: (... -> any)
-  def n(arg), do: b(m, (b(b(m),&b/2)), arg)
+  def n(arg), do: b(m, (b(b(m), b)), arg)
 
   @doc ~S"""
   Apply a function to itself
