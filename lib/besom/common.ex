@@ -22,4 +22,15 @@ defmodule Besom.Common do
   """
   @spec second(any, any) :: any
   def second(_, b), do: b
+
+  @doc ~S"""
+  Increment a number
+  """
+  @spec inc(number) :: number
+  def inc(num), do: a + 1
+
+  @doc ~S"""
+  """
+  @spec dec(number) :: number
+  dec(num), do: num - 1
 end
