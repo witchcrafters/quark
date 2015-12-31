@@ -1,4 +1,4 @@
-defprotocol Besom.Ordinal do
+defprotocol Quark.Ordinal do
   @moduledoc ~S"""
   """
 

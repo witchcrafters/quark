@@ -1,6 +1,6 @@
-defmodule Besom.Classic.BCKW do
-  import Besom.Classic.SKI, only: [k: 2]
-  import Besom.Curry, only: [curry: 1]
+defmodule Quark.Classic.BCKW do
+  import Quark.Classic.SKI, only: [k: 2]
+  import Quark.Curry, only: [curry: 1]
 
   @doc ~S"""
   Normal (binary) function composition

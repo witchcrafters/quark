@@ -1,9 +1,9 @@
-defmodule Besom.Mixfile do
+defmodule Quark.Mixfile do
   use Mix.Project
 
   def project do
-    [app:     :besom,
-     name:    "Besom",
+    [app:     :quark,
+     name:    "Quark",
 
      description: "Common combinators for Elixir",
      package: package,
@@ -11,8 +11,8 @@ defmodule Besom.Mixfile do
      version: "0.0.1",
      elixir:  "~> 1.1",
 
-     source_url:   "https://github.com/robot-overlord/besom",
-     homepage_url: "https://github.com/robot-overlord/besom",
+     source_url:   "https://github.com/robot-overlord/quark",
+     homepage_url: "https://github.com/robot-overlord/quark",
 
      build_embedded:  Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -47,8 +47,8 @@ defmodule Besom.Mixfile do
   defp package do
     [maintainers: ["Brooklyn Zelenka"],
      licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/robot-overlord/besom",
-              "Docs" => "http://robot-overlord.github.io/besom/"}]
+     links: %{"GitHub" => "https://github.com/robot-overlord/quark",
+              "Docs" => "http://robot-overlord.github.io/quark/"}]
   end
 
 end

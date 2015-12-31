@@ -1,4 +1,4 @@
-defmodule Besom.Curry do
+defmodule Quark.Curry do
   @moduledoc ~S"""
   [Currying](https://en.wikipedia.org/wiki/Currying) breaks up a function into a
   series of unary functions that apply their arguments to some inner
@@ -6,7 +6,7 @@ defmodule Besom.Curry do
   partial application on any curried function.
   """
 
-  alias Besom.Common, as: C
+  alias Quark.Common, as: C
 
   @doc ~S"""
   This allows you to curry a function at runtime, rather than upon definition.

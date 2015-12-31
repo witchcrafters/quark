@@ -1,4 +1,4 @@
-defmodule Besom.Compose do
+defmodule Quark.Compose do
   @moduledoc ~S"""
   """
 
@@ -10,7 +10,7 @@ defmodule Besom.Compose do
       7
 
   """
-  defdelegate compose, to: Besom.BCKW, as: :b
+  defdelegate compose, to: Quark.BCKW, as: :b
 
 
   @doc ~S"""

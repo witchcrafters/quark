@@ -1,4 +1,4 @@
-defmodule Besom.Classic do
+defmodule Quark.Classic do
   @moduledoc ~S"""
   The classic "letter" combinators. `s` and `k` alone can be used to express any
   algorithm, though generally not efficiently.
@@ -7,7 +7,7 @@ defmodule Besom.Classic do
   non-combinatory implementations.
   """
 
-  import Besom.Classic.SKI
-  import Besom.Classic.BCKW
-  import Besom.Classic.FixedPoint
+  import Quark.Classic.SKI
+  import Quark.Classic.BCKW
+  import Quark.Classic.FixedPoint
 end

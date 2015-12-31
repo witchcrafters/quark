@@ -1,4 +1,4 @@
-defmodule Besom.Classic.SKI do
+defmodule Quark.Classic.SKI do
   @moduledoc ~S"""
   The classic [SKI system](https://en.wikipedia.org/wiki/SKI_combinator_calculus) combinators.
 

@@ -1,8 +1,8 @@
-defmodule Besom.Classic.FixedPoint do
+defmodule Quark.Classic.FixedPoint do
   @moduledoc ~S"""
   """
 
-  import Besom.Classix.BCKW, only: [b: 3]
+  import Quark.Classix.BCKW, only: [b: 3]
 
   @doc ~S"""
   The famous Y-combinator. This is a [fixed-point](https://en.wikipedia.org/wiki/Fixed-point_combinator),

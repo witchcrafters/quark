@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :besom, key: :value
+#     config :quark, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:besom, :key)
+#     Application.get_env(:quark, :key)
 #
 # Or configure a 3rd-party app:
 #

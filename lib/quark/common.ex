@@ -1,14 +1,14 @@
-defmodule Besom.Common do
+defmodule Quark.Common do
   @moduledoc ~S"""
   """
 
-  import Besom.Ordinal.Integer
+  import Quark.Ordinal.Integer
 
-  defdelegate flip, to: Besom.Classic.BCKW, as: :c
-  defdelegate id, to: Besom.Classic.SKI, as: :i
+  defdelegate flip, to: Quark.Classic.BCKW, as: :c
+  defdelegate id, to: Quark.Classic.SKI, as: :i
 
-  defdelegate constant, to: Besom.Classic.SKI, as: :k
-  defdelegate first, to: Besom.Classic.SKI, as: :k
+  defdelegate constant, to: Quark.Classic.SKI, as: :k
+  defdelegate first, to: Quark.Classic.SKI, as: :k
 
   @doc ~S"""
   Opposite of `first` (the `k` combinator).
