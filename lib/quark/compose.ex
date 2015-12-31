@@ -2,16 +2,19 @@ defmodule Quark.Compose do
   @moduledoc ~S"""
   """
 
+  alias Quark.Common, as: C
+  alias Quark.Common.BCKW, as: BCKW
+
   @doc ~S"""
   Function composition
 
-      iex> sum_plus_one = Witchcraft.Utility.compose(&(&1 + 1), &(Enum.sum(&1)))
+      iex> sum_plus_one = compose(&(&1 + 1), &(Enum.sum(&1)))
       iex> [1,2,3] |> sum_plus_one.()
       7
 
   """
-  defdelegate compose, to: Quark.BCKW, as: :b
-
+  @spec compose((... -> any), (... -> any)) :: any
+  def compose(g, f), do: BCKW.b(g, f)
 
   @doc ~S"""
   Infix compositon operator
@@ -49,7 +52,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose_list([(... -> any)]) :: (... -> any)
-  def compose_list(func_list), do: List.foldr(func_list, id, &compose(&1,&2))
+  def compose_list(func_list), do: List.foldr(func_list, &C.id/1, &compose(&1,&2))
 
   @doc ~S"""
   Compose functions, from the head of the list of functions. The is the reverse
@@ -61,5 +64,5 @@ defmodule Quark.Compose do
 
   """
   @spec compose_list_forward([(... -> any)]) :: (... -> any)
-  def reverse_compose_list(func_list), do: Enum.reduce(func_list, id, &compose(&1,&2))
+  def compose_list_forward(func_list), do: Enum.reduce(func_list, &C.id/1, &compose/2)
 end

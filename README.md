@@ -1,10 +1,7 @@
-# Quark
+![](https://github.com/robot-overlord/quark/blob/master/logo.png?raw=true)
 ## Common combinators for Elixir
 
-![](https://github.com/robot-overlord/quark/blob/master/logo.png?raw=true)
-
-
-## Installation
+### Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 

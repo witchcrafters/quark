@@ -2,7 +2,7 @@ defmodule Quark.Classic.FixedPoint do
   @moduledoc ~S"""
   """
 
-  import Quark.Classix.BCKW, only: [b: 3]
+  import Quark.Classic.BCKW
 
   @doc ~S"""
   The famous Y-combinator. This is a [fixed-point](https://en.wikipedia.org/wiki/Fixed-point_combinator),
@@ -25,8 +25,8 @@ defmodule Quark.Classic.FixedPoint do
   defp y_apply(func, x), do: func.(x, x)
 
   def turing() do
-    Θ = (λx. λy. (y (x x y))) (λx. λy. (y (x x y)))
-    Θv = (λx. λy. (y (λz. x x y z))) (λx. λy. (y (λz. x x y z)))
+    # Θ = (λx. λy. (y (x x y))) (λx. λy. (y (x x y)))
+    # Θv = (λx. λy. (y (λz. x x y z))) (λx. λy. (y (λz. x x y z)))
   end
 
   @doc ~S"""
@@ -34,16 +34,17 @@ defmodule Quark.Classic.FixedPoint do
   """
   @spec z((... -> any), any) :: (... -> any)
   def z(g, v), do: g.(z(g)).(v)
+  def z(g), do: &z(g, &1)
 
   @doc ~S"""
   A strictly non-standard fixed-point combinator
   """
   @spec n((... -> any)) :: (... -> any)
-  def n(arg), do: b(m, (b(b(m),b)), arg)
+  def n(arg), do: b(m(), (b(b(m()),&b/2)), arg)
 
   @doc ~S"""
   Apply a function to itself
   """
-  @spec m((... -> any)) :: (... -> any)
-  defp m(fun), do: &fun.(fun.(&1))
+  @spec m() :: (... -> any)
+  defp m(), do: fn fun -> &fun.(fun.(&1)) end
 end

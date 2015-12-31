@@ -47,7 +47,7 @@ defmodule Quark.Curry do
   """
   @spec uncurry((any -> any), any) :: any
   def uncurry(fun, [args]) do
-    Enum.reduce(Enum.reverse([args]), func, C.flip(uncurry_step))
+    Enum.reduce(Enum.reverse([args]), fun, C.flip(&uncurry/2))
   end
 
   def uncurry(fun, arg), do: fun.(arg)

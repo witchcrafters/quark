@@ -1,18 +1,18 @@
 defmodule Quark.Classic.SKI do
   @moduledoc ~S"""
-  The classic [SKI system](https://en.wikipedia.org/wiki/SKI_combinator_calculus) combinators.
-
-  `s` and `k` alone can be used to express any algorithm, though generally not efficiently.
+  The classic [SKI system](https://en.wikipedia.org/wiki/SKI_combinator_calculus)
+  combinators. `s` and `k` alone can be used to express any algorithm,
+  though generally not efficiently.
   """
 
   @doc ~S"""
   The identity combinator
 
-  iex> i(1)
-  1
+      iex> i(1)
+      1
 
-  iex> i("idenity combinator")
-  "identity combinator"
+      iex> i("idenity combinator")
+      "identity combinator"
 
   """
   @spec i(any) :: any
@@ -48,7 +48,7 @@ defmodule Quark.Classic.SKI do
   @spec s((... -> any), (... -> any), any) :: any
   def s(x, y, z) do
     sub_x = &x.(z, &1)
-    sub_y = y(z)
+    sub_y = y.(z)
 
     sub_x.(sub_y)
   end

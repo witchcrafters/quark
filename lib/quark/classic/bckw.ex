@@ -7,6 +7,9 @@ defmodule Quark.Classic.BCKW do
   """
   @spec b((... -> any), (... -> any), any) :: any
   def b(x, y, z), do: curry(x).(curry(y).(z))
+  def b(x, y), do: b(x).(y)
+  def b(x), do: b().(x)
+  def b(), do: curry(&b/3)
 
   @doc ~S"""
   Reverse (first) two arguments (`flip`)
@@ -32,6 +35,6 @@ defmodule Quark.Classic.BCKW do
       1
 
   """
-  @spec w(... -> any) :: any
+  @spec w((... -> any)) :: any
   def w(fun), do: &(curry(fun).(&1).(&1))
 end
