@@ -20,13 +20,17 @@ defmodule Besom.Classic.SKI do
 
   @doc ~S"""
   The constant ("Konstant") combinator. Returns the first argument, unchanged, and
-  discards the second argument.
+  discards the second argument. Can be used to repeatedly apply the same value
+  in functions such as folds.
 
-  iex> k(1,2)
-  1
+      iex> k(1,2)
+      1
 
-  iex> k("happy", "sad")
-  "happy"
+      iex> k("happy", "sad")
+      "happy"
+
+      iex> Enum.reduce([1,2,3], [42], k)
+      3
 
   """
   @spec k(any, any) :: any
