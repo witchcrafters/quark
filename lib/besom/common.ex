@@ -2,8 +2,9 @@ defmodule Besom.Common do
   @moduledoc ~S"""
   """
 
-  defdelegate flip, to: Besom.Classic.BCKW, as: :c
+  import Besom.Ordinal.Integer
 
+  defdelegate flip, to: Besom.Classic.BCKW, as: :c
   defdelegate id, to: Besom.Classic.SKI, as: :i
 
   defdelegate constant, to: Besom.Classic.SKI, as: :k
@@ -18,21 +19,10 @@ defmodule Besom.Common do
       iex> Besom.Common.second(43, 42)
       42
 
-      iex> Enum.reduce([1,2,3], [], second)
+      iex> Enum.reduce([1,2,3], [], &second/2)
       []
 
   """
   @spec second(any, any) :: any
   def second(_, b), do: b
-
-  @doc ~S"""
-  Increment a number
-  """
-  @spec inc(number) :: number
-  def inc(num), do: a + 1
-
-  @doc ~S"""
-  """
-  @spec dec(number) :: number
-  dec(num), do: num - 1
 end

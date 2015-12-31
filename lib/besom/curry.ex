@@ -35,8 +35,15 @@ defmodule Besom.Curry do
     fn arg -> curry(fun, arity - 1, [arg | arguments]) end
   end
 
+
   @doc ~S"""
-  Not "true" uncurrying
+  Convert a curried function to a function on pairs
+  """
+  @spec uncurry((any -> any)) :: ((any, any) -> any)
+  def uncurry(fun), do: &(fun.(&1).(&2))
+
+  @doc ~S"""
+  Apply arguments to a curried function
   """
   @spec uncurry((any -> any), any) :: any
   def uncurry(fun, [args]) do
