@@ -2,6 +2,7 @@ defmodule Quark.Classic.FixedPoint do
   @moduledoc ~S"""
   """
 
+  import Quark.Curry
   import Quark.Classic.BCKW
 
   @doc ~S"""
@@ -33,14 +34,15 @@ defmodule Quark.Classic.FixedPoint do
   A normal order fixed point
   """
   @spec z((... -> any), any) :: (... -> any)
-  def z(g, v), do: g.(z(g)).(v)
-  def z(g), do: &z(g, &1)
+  def z(g, v), do: g.(z.(g)).(v)
+  def z(g), do: z().(g)
+  def z(), do: curry(&z/2)
 
   @doc ~S"""
   A strictly non-standard fixed-point combinator
   """
   @spec n((... -> any)) :: (... -> any)
-  def n(arg), do: b(m(), (b(b(m()),&b/2)), arg)
+  def n(arg), do: b(m, (b(b(m),&b/2)), arg)
 
   @doc ~S"""
   Apply a function to itself
