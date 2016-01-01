@@ -8,10 +8,12 @@ defmodule Quark.Classic.SKI do
   @doc ~S"""
   The identity combinator
 
+      iex> import Quark.Classic.SKI
       iex> i(1)
       1
 
-      iex> i("idenity combinator")
+      iex> import Quark.Classic.SKI
+      iex> i("identity combinator")
       "identity combinator"
 
   """
@@ -23,13 +25,16 @@ defmodule Quark.Classic.SKI do
   discards the second argument. Can be used to repeatedly apply the same value
   in functions such as folds.
 
-      iex> k(1,2)
+      iex> import Quark.Classic.SKI
+      iex> k(1, 2)
       1
 
+      iex> import Quark.Classic.SKI
       iex> k("happy", "sad")
       "happy"
 
-      iex> Enum.reduce([1,2,3], [42], k)
+      iex> import Quark.Classic.SKI
+      iex> Enum.reduce([1,2,3], [42], &k/2)
       3
 
   """
@@ -40,11 +45,13 @@ defmodule Quark.Classic.SKI do
   The "substitution" combinator. Applies the last argument to the first two, and then
   the first two to each other.
 
-  iex> s()
-  ghjkl;
+  iex> import Quark.Classic.SKI
+  iex> add = &(&1 + &2)
+  iex> double = &(&1 * 2)
+  iex> s(add, double, 8)
+  24
 
   """
-  # TODO: CURRY ALL ARGS
   @spec s((... -> any), (... -> any), any) :: any
   def s(x, y, z) do
     sub_x = &x.(z, &1)
