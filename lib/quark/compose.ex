@@ -2,8 +2,7 @@ defmodule Quark.Compose do
   @moduledoc ~S"""
   """
 
-  alias Quark.Common, as: C
-  alias Quark.Common.BCKW, as: BCKW
+  alias Quark.Classic.BCKW, as: BCKW
 
   @doc ~S"""
   Function composition

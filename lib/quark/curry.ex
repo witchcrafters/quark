@@ -6,8 +6,6 @@ defmodule Quark.Curry do
   partial application on any curried function.
   """
 
-  alias Quark.Common, as: C
-
   @doc ~S"""
   This allows you to curry a function at runtime, rather than upon definition.
 
@@ -51,4 +49,33 @@ defmodule Quark.Curry do
   end
 
   def uncurry(fun, arg), do: fun.(arg)
+
+  @doc ~S"""
+  """
+  defmacro __using__(_) do
+    quote do
+      import Quark.Curry, only: [defcurry: 2, defcurryp: 2]
+    end
+  end
+
+  @doc ~S"""
+  """
+  defmacro defcurry(head, do: body) do
+    {fname, ctx, args} = head
+
+    quote do
+      def unquote({fname, ctx, []}) do
+        unquote(wrap(args, body))
+      end
+    end
+  end
+
+  defp wrap([], body), do: body
+  defp wrap([arg|args], body) do
+    quote do
+      fn unquote(arg) ->
+        unquote(wrap(args, body))
+      end
+    end
+  end
 end
