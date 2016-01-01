@@ -18,13 +18,13 @@ defmodule Quark.Classic.FixedPoint do
       1
 
   """
-  @spec y((... -> any)) :: (... -> any)
+  @spec y((... -> any)) :: (any -> any)
   def y(fun) do
     curry_fun = curry(fun)
-    curry_fun.(&y_apply/1).(&(curry_fun.(y_apply(&1))))
+    curry_fun.(&self_apply/1).(&(curry_fun.(self_apply(&1))))
   end
 
-  defp y_apply(fun) do
+  defp self_apply(fun) do
     curried_fun = curry(fun)
     curried_fun.(curried_fun)
   end
