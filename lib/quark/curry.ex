@@ -9,10 +9,15 @@ defmodule Quark.Curry do
   @doc ~S"""
   This allows you to curry a function at runtime, rather than upon definition.
 
+      iex> import Quark.Curry
       iex> curried_reduce_3 = curry &Enum.reduce/3
       iex> {_, arity} = :erlang.fun_info(curried_reduce_3, :arity)
-      {:arity, 1}
+      iex> arity
+      1
 
+      iex> import Quark.Curry
+      iex> curried_reduce_3 = curry &Enum.reduce/3
+      iex> import Quark.Curry
       iex> curried_reduce_3.([1,2,3]).(42).(&(&1 + &2))
       48
 
@@ -30,9 +35,9 @@ defmodule Quark.Curry do
   end
 
   def curry(fun, arity, arguments) do
-    fn arg -> curry(fun, arity - 1, [arg | arguments]) end
+    import Quark.Ordinal.Integer, only: [pred: 1]
+    fn arg -> curry(fun, pred(arity), [arg | arguments]) end
   end
-
 
   @doc ~S"""
   Convert a curried function to a function on pairs

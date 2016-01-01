@@ -2,7 +2,7 @@ defmodule Quark.Classic.FixedPoint do
   @moduledoc ~S"""
   """
 
-  import Quark.Curry
+  import Quark.Curry, only: [curry: 1]
   import Quark.Classic.BCKW
 
   @doc ~S"""
@@ -10,20 +10,22 @@ defmodule Quark.Classic.FixedPoint do
   which means that applying arguments to this function will always result in a function
   with two or more arguments available.
 
-  iex> {_, arity} = :erlang.fun_info(s, :arity)
-  iex> s_arity = arity
-  iex> one_run = y(s, i)
-  iex> {_, arity} = :erlang.fun_info(one_run, :arity)
-  iex> arity == s_arity
-  True
+      iex> import Quark.Classic.FixedPoint
+      iex> import Quark.Classic.SKI
+      iex> one_run = y(&s/3, &k/2, &k/2)
+      iex> {_, arity} = :erlang.fun_info(one_run, :arity)
+      iex> arity === 1
+      True
 
   """
-  @spec y((... -> any), any) :: (... -> any)
-  def y(func, x) do
-    y_apply(func, x).(y_apply(func, x))
+  @spec y((... -> any), (... -> any), any) :: (... -> any)
+  def y(fun, x, y) do
+    y_apply(fun, curry(x)).(y_apply(fun, y))
   end
 
-  defp y_apply(func, x), do: func.(x, x)
+  defp y_apply(fun, x) do
+    curry(fun).(x).(x)
+  end
 
   def turing() do
     # Θ = (λx. λy. (y (x x y))) (λx. λy. (y (x x y)))

@@ -3,7 +3,6 @@ defmodule Quark.Compose do
   """
 
   alias Quark, as: Q
-  alias Quark.Classic.BCKW, as: BCKW
 
   @doc ~S"""
   Function composition
@@ -19,9 +18,9 @@ defmodule Quark.Compose do
   @doc ~S"""
   Function composition, from the tail of the list to the head
 
-  iex> sum_plus_one = Quark.Compose.compose([&(&1 + 1), &Enum.sum/1])
-  iex> [1,2,3] |> sum_plus_one.()
-  7
+      iex> sum_plus_one = Quark.Compose.compose([&(&1 + 1), &Enum.sum/1])
+      iex> [1,2,3] |> sum_plus_one.()
+      7
 
   """
   @spec compose([(... -> any)]) :: (... -> any)
@@ -37,10 +36,10 @@ defmodule Quark.Compose do
 
       iex> import Quark.Compose
       iex> add_one = &(&1 + 1)
-      iex> pipe = [1,2,3] |> Enum.sum |> add_one.()
-      iex> compose = [1,2,3] |> (add_one.() <|> &Enum.sum/1)
-      iex> pipe === compose
-      True
+      iex> piped = [1,2,3] |> Enum.sum |> add_one.()
+      iex> composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
+      iex> piped == composed
+      true
 
   """
   @spec (... -> any) <|> (... -> any) :: (... -> any)
