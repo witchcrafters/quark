@@ -6,8 +6,4 @@ defmodule Quark.Classic do
   For performance reasons, many of the combinators are given
   non-combinatory implementations.
   """
-
-  import Quark.Classic.SKI
-  import Quark.Classic.BCKW
-  import Quark.Classic.FixedPoint
 end

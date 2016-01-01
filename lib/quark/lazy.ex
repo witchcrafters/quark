@@ -12,24 +12,19 @@ defmodule Quark.Lazy do
     end
   end
 
-  defmacro deflazy(head, do: body) do
-    {fname, ctx, args} = head
-    curried = quote do: defcurry(head, do: body)
+  defmacro deflazy(head, do: body), do: rehydrate(head, body)
 
-    Enum.reduce({args, []}, &rehydrate(&1, curried, head))
+  defp rehydrate({fun_name, ctx, []}, body) do
+    quote do defcurry(head, do: body) end
   end
 
-  defp rehydrate(curried, {_, _, []}) do
-    quote do: unquote(curried)
-  end
-
-  defp rehydrate(curried, {fun_name, ctx, _}) do
+  defp rehydrate({fun_name, ctx, [arg|args]}, body) do
     quote do
-      def unquote({fun_name, ctx, args}) do
-        Enum.reduce(args, curried, &(&1.(&2)))
+      def unquote({fun_name, ctx, [arg|args]}) do
+        Enum.reduce(args, unquote({fun_name, ctx, []}), &(&1.(&2)))
       end
     end
 
-    rehydrate(curried, {fun_name, ctx, rest(args)})
+    rehydrate({fun_name, ctx, args}, body)
   end
 end

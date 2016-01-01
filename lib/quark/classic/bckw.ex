@@ -1,5 +1,4 @@
 defmodule Quark.Classic.BCKW do
-  import Quark.Classic.SKI, only: [k: 2]
   import Quark.Curry, only: [curry: 1]
 
   @doc ~S"""
