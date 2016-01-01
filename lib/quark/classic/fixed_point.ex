@@ -12,19 +12,21 @@ defmodule Quark.Classic.FixedPoint do
 
       iex> import Quark.Classic.FixedPoint
       iex> import Quark.Classic.SKI
-      iex> one_run = y(&s/3, &k/2, &k/2)
+      iex> one_run = y(&s/3)
       iex> {_, arity} = :erlang.fun_info(one_run, :arity)
-      iex> arity === 1
-      True
+      iex> arity
+      1
 
   """
-  @spec y((... -> any), (... -> any), any) :: (... -> any)
-  def y(fun, x, y) do
-    y_apply(fun, curry(x)).(y_apply(fun, y))
+  @spec y((... -> any)) :: (... -> any)
+  def y(fun) do
+    curry_fun = curry(fun)
+    curry_fun.(&y_apply/1).(&(curry_fun.(y_apply(&1))))
   end
 
-  defp y_apply(fun, x) do
-    curry(fun).(x).(x)
+  defp y_apply(fun) do
+    curried_fun = curry(fun)
+    curried_fun.(curried_fun)
   end
 
   def turing() do
