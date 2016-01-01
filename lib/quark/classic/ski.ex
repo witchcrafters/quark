@@ -40,6 +40,8 @@ defmodule Quark.Classic.SKI do
   """
   @spec k(any, any) :: any
   def k(x, _), do: x
+  def k(x), do: &k(x, &1)
+  def k(), do: fn x -> fn y -> k(x).(y) end end
 
   @doc ~S"""
   The "substitution" combinator. Applies the last argument to the first two, and then

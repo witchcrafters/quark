@@ -1,5 +1,6 @@
 defmodule Quark.Lazy do
   @moduledoc ~S"""
+  RENAME TO "Quark.Partial"
   Not *actually* lazy, but want to keep apart from `defcurry` so that users can
   write multiple arities thenselves with `defcurry`, and auto-arity with `deflazy`
   """

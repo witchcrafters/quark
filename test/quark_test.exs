@@ -3,7 +3,6 @@ defmodule QuarkTest do
   doctest Quark
 
   doctest Quark.Classic
-
   doctest Quark.Classic.BCKW
   doctest Quark.Classic.FixedPoint
   doctest Quark.Classic.SKI
@@ -11,4 +10,6 @@ defmodule QuarkTest do
   doctest Quark.Compose
 
   doctest Quark.Curry
+
+  doctest Quark.Sequence
 end
