@@ -1,8 +1,6 @@
 /_build
-<<<<<<< eca097c712a3684589dae34d8e6668e04619daca
-=======
 /cover
->>>>>>> Initial commit
 /deps
 erl_crash.dump
 *.ez
+.DS_Store

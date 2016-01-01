@@ -1,4 +1,4 @@
-defmodule Quark.Classic.FixedPoint do
+defmodule Quark.FixedPoint do
   @moduledoc ~S"""
   Fixed point combinators generalize the idea of a recursive function. This can
   be used to great effect, simplifying many definitions.
@@ -12,14 +12,14 @@ defmodule Quark.Classic.FixedPoint do
       ...>     n -> n * fac.(n - 1)
       ...>   end
       ...> end
-      iex> factorial = Quark.Classic.FixedPoint.y(fac)
+      iex> factorial = Quark.FixedPoint.y(fac)
       iex> factorial.(9)
       362880
 
   The resulting functions will always be curried
 
-      iex> import Quark.Classic.FixedPoint, only: [y: 1]
-      iex> import Quark.Classic.SKI, only: [s: 3]
+      iex> import Quark.FixedPoint, only: [y: 1]
+      iex> import Quark.SKI, only: [s: 3]
       iex> one_run = y(&s/3)
       iex> {_, arity} = :erlang.fun_info(one_run, :arity)
       iex> arity
@@ -28,13 +28,12 @@ defmodule Quark.Classic.FixedPoint do
   """
 
   import Quark.Curry, only: [curry: 1]
-  import Quark.Classic, only: [m: 0, m: 1]
-  import Quark.Classic.BCKW, only: [b: 0, b: 1, b: 2, b: 3]
+  import Quark.BCKW, only: [b: 0, b: 1, b: 2, b: 3]
 
   @doc ~S"""
   The famous Y-combinator. The resulting function will always be curried.
 
-      iex> import Quark.Classic.FixedPoint, only: [y: 1]
+      iex> import Quark.FixedPoint, only: [y: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0
@@ -60,7 +59,7 @@ defmodule Quark.Classic.FixedPoint do
   @doc ~S"""
   Alan Turing's fix-point combinator. This is the call-by-value formulation.
 
-      iex> import Quark.Classic.FixedPoint, only: [turing: 1]
+      iex> import Quark.FixedPoint, only: [turing: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0
@@ -90,7 +89,7 @@ defmodule Quark.Classic.FixedPoint do
   @doc ~S"""
   A [normal order](https://en.wikipedia.org/wiki/Evaluation_strategy#Normal_order) fixed point
 
-      iex> import Quark.Classic.FixedPoint, only: [z: 1]
+      iex> import Quark.FixedPoint, only: [z: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0

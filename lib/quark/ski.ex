@@ -1,4 +1,4 @@
-defmodule Quark.Classic.SKI do
+defmodule Quark.SKI do
   @moduledoc ~S"""
   The classic [SKI system](https://en.wikipedia.org/wiki/SKI_combinator_calculus)
   combinators. `s` and `k` alone can be used to express any algorithm,
@@ -8,11 +8,11 @@ defmodule Quark.Classic.SKI do
   @doc ~S"""
   The identity combinator
 
-      iex> import Quark.Classic.SKI
+      iex> import Quark.SKI
       iex> i(1)
       1
 
-      iex> import Quark.Classic.SKI
+      iex> import Quark.SKI
       iex> i("identity combinator")
       "identity combinator"
 
@@ -25,15 +25,15 @@ defmodule Quark.Classic.SKI do
   discards the second argument. Can be used to repeatedly apply the same value
   in functions such as folds.
 
-      iex> import Quark.Classic.SKI
+      iex> import Quark.SKI
       iex> k(1, 2)
       1
 
-      iex> import Quark.Classic.SKI
+      iex> import Quark.SKI
       iex> k("happy", "sad")
       "happy"
 
-      iex> import Quark.Classic.SKI
+      iex> import Quark.SKI
       iex> Enum.reduce([1,2,3], [42], &k/2)
       3
 
@@ -47,7 +47,7 @@ defmodule Quark.Classic.SKI do
   The "substitution" combinator. Applies the last argument to the first two, and then
   the first two to each other.
 
-  iex> import Quark.Classic.SKI
+  iex> import Quark.SKI
   iex> add = &(&1 + &2)
   iex> double = &(&1 * 2)
   iex> s(add, double, 8)

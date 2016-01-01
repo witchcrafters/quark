@@ -13,7 +13,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose((... -> any), (... -> any)) :: any
-  defdelegate compose(g, f), to: Quark.Classic.BCKW, as: :b
+  defdelegate compose(g, f), to: Quark.BCKW, as: :b
 
   @doc ~S"""
   Function composition, from the tail of the list to the head
