@@ -13,7 +13,10 @@
   - [Includes](#includes)
 - [Functional Overview](#functional-overview)
   - [Curry](#curry)
+    - [Functions](#functions)
+    - [Macros](#macros-defcurry-and-defcurryp)
   - [Partial](#partial)
+    - [Macros](##macros-defpartial-and-defpartialp)
   - [Compose](#compose)
   - [Common Combinators](#common-combinators)
     - [Classics](#classics)
@@ -93,12 +96,13 @@ div_ten.(2)
 ```
 
 ## Partial
+
 :crown: We think that this is really the crowning jewel of `Quark`.
 `defpartial` and `defpartialp` create all arities possible for the defined
 function, bare, partially applied, and fully curried.
 This does use up all the full arity-space for that function name, however.
 
-## Macros: `defpartial` and `defpartialp`
+### Macros: `defpartial` and `defpartialp`
 
 ```elixir
 
