@@ -24,21 +24,25 @@ defmodule Quark.Partial do
   arity. For instance, `defpartial add(a,b), do: a + b` will generate `add/0`,
   `add/1` and `add/2`.
 
-      defpartialp minus(a, b, c), do: a - b - c
+  ```elixir
 
-      minus(3, 2, 1)
-      # => 0
+  defpartialp minus(a, b, c), do: a - b - c
 
-      minus.(3).(2).(1)
-      # => 0
+  minus(3, 2, 1)
+  # => 0
 
-      below_ten = minus(5)
-      below_ten.(2, 1)
-      # => 7
+  minus.(3).(2).(1)
+  # => 0
 
-      below_five = minus(20, 15)
-      below_five.(2)
-      # => 3
+  below_ten = minus(5)
+  below_ten.(2, 1)
+  # => 7
+
+  below_five = minus(20, 15)
+  below_five.(2)
+  # => 3
+
+  ```
 
   """
   defmacro defpartial({fun_name, ctx, args}, do: body) do
@@ -58,21 +62,25 @@ defmodule Quark.Partial do
   @doc ~S"""
   `defpartial`, but generates private functions
 
-      defpartialp minus(a, b, c), do: a - b - c
+  ```elixir
 
-      minus(3, 2, 1)
-      # => 0
+  defpartialp minus(a, b, c), do: a - b - c
 
-      minus.(3).(2).(1)
-      # => 0
+  minus(3, 2, 1)
+  # => 0
 
-      below10 = minus(5)
-      below10.(2, 1)
-      # => 7
+  minus.(3).(2).(1)
+  # => 0
 
-      below5 = minus(10, 5)
-      below5.(2)
-      # => 3
+  below10 = minus(5)
+  below10.(2, 1)
+  # => 7
+
+  below5 = minus(10, 5)
+  below5.(2)
+  # => 3
+
+  ```
 
   """
   defmacro defpartialp({fun_name, ctx, args}, do: body) do

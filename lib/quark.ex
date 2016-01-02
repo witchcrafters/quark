@@ -30,11 +30,15 @@ defmodule Quark do
   Returns the *second* of two arguments. Can be used to repeatedly apply the same value
   in functions such as folds.
 
-      iex> Quark.second(43, 42)
-      42
+  ```elixir
 
-      iex> Enum.reduce([1,2,3], [], &Quark.second/2)
-      []
+  iex> Quark.second(43, 42)
+  42
+
+  iex> Enum.reduce([1,2,3], [], &Quark.second/2)
+  []
+
+  ```
 
   """
   @spec second(any, any) :: any
@@ -43,11 +47,15 @@ defmodule Quark do
   @doc ~S"""
   Apply a function to itself
 
-      iex> import Quark, only: [m: 1]
-      iex> add_one = fn x -> x + 1 end
-      iex> add_two = m(add_one)
-      iex> add_two.(8)
-      10
+  ```elixir
+
+  iex> import Quark, only: [m: 1]
+  iex> add_one = fn x -> x + 1 end
+  iex> add_two = m(add_one)
+  iex> add_two.(8)
+  10
+
+  ```
 
   """
   @spec m((... -> any)) :: (... -> any)

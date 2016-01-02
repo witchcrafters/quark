@@ -3,9 +3,13 @@ defmodule Quark.Compose do
   Function composition is taking two functions, and joining them together to create
   a new function. For example:
 
-      iex> sum_plus_one = compose([&(&1 + 1), &Enum.sum/1])
-      iex> sum_plus_one.([1,2,3])
-      7
+  ```elixir
+
+  iex> sum_plus_one = compose([&(&1 + 1), &Enum.sum/1])
+  iex> sum_plus_one.([1,2,3])
+  7
+
+  ```
 
   In this case, we have joined `Enum.sum` with a function that adds one, to create
   a new function that takes a list, sums it, and adds one.
@@ -20,9 +24,13 @@ defmodule Quark.Compose do
   @doc ~S"""
   Function composition
 
-      iex> sum_plus_one = compose(&(&1 + 1), &Enum.sum/1)
-      iex> [1,2,3] |> sum_plus_one.()
-      7
+  ```elixir
+
+  iex> sum_plus_one = compose(&(&1 + 1), &Enum.sum/1)
+  iex> [1,2,3] |> sum_plus_one.()
+  7
+
+  ```
 
   """
   @spec compose((... -> any), (... -> any)) :: any
@@ -31,9 +39,13 @@ defmodule Quark.Compose do
   @doc ~S"""
   Function composition, from the tail of the list to the head
 
-      iex> sum_plus_one = compose([&(&1 + 1), &Enum.sum/1])
-      iex> [1,2,3] |> sum_plus_one.()
-      7
+  ```elixir
+
+  iex> sum_plus_one = compose([&(&1 + 1), &Enum.sum/1])
+  iex> [1,2,3] |> sum_plus_one.()
+  7
+
+  ```
 
   """
   @spec compose([(... -> any)]) :: (... -> any)
@@ -43,15 +55,19 @@ defmodule Quark.Compose do
   @doc ~S"""
   Infix compositon operator
 
-      iex> sum_plus_one = fn x -> x + 1 end <|> &Enum.sum/1
-      iex> sum_plus_one.([1,2,3])
-      7
+  ```elixir
 
-      iex> add_one = &(&1 + 1)
-      iex> piped = [1,2,3] |> Enum.sum |> add_one.()
-      iex> composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
-      iex> piped == composed
-      true
+  iex> sum_plus_one = fn x -> x + 1 end <|> &Enum.sum/1
+  iex> sum_plus_one.([1,2,3])
+  7
+
+  iex> add_one = &(&1 + 1)
+  iex> piped = [1,2,3] |> Enum.sum |> add_one.()
+  iex> composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
+  iex> piped == composed
+  true
+
+  ```
 
   """
   @spec (... -> any) <|> (... -> any) :: (... -> any)
@@ -60,9 +76,13 @@ defmodule Quark.Compose do
   @doc ~S"""
   Function composition, from the back of the lift to the front
 
-     iex> sum_plus_one = compose_forward(&(Enum.sum(&1)), &(&1 + 1))
-     iex> [1,2,3] |> sum_plus_one.()
-     7
+  ```elixir
+
+  iex> sum_plus_one = compose_forward(&(Enum.sum(&1)), &(&1 + 1))
+  iex> [1,2,3] |> sum_plus_one.()
+  7
+
+  ```
 
   """
   @spec compose_forward((... -> any), (... -> any)) :: (... -> any)
@@ -73,9 +93,13 @@ defmodule Quark.Compose do
   Compose functions, from the head of the list of functions. The is the reverse
   order versus what one would normally expect (left to right rather than right to left).
 
-      iex> sum_plus_one = compose_list_forward([&Enum.sum/1, &(&1 + 1)])
-      iex> [1,2,3] |> sum_plus_one.()
-      7
+  ```elixir
+
+  iex> sum_plus_one = compose_list_forward([&Enum.sum/1, &(&1 + 1)])
+  iex> [1,2,3] |> sum_plus_one.()
+  7
+
+  ```
 
   """
   @spec compose_list_forward([(... -> any)]) :: (... -> any)

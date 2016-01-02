@@ -7,8 +7,12 @@ defprotocol Quark.Sequence do
 
   For instance, integers are generally thought of as centering around 0
 
-      iex> origin(9)
-      0
+  ```elixir
+
+  iex> origin(9)
+  0
+
+  ```
 
   """
   @spec origin(any) :: any
@@ -19,11 +23,15 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number above.
 
-      iex> succ(1)
-      2
+  ```elixir
 
-      iex> 10 |> origin |> succ |> succ
-      2
+  iex> succ(1)
+  2
+
+  iex> 10 |> origin |> succ |> succ
+  2
+
+  ```
 
   """
   @spec succ(any) :: any
@@ -34,11 +42,15 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number below.
 
-      iex> pred(10)
-      9
+  ```elixir
 
-      iex> 42 |> origin |> pred |> pred
-      -2
+  iex> pred(10)
+  9
+
+  iex> 42 |> origin |> pred |> pred
+  -2
+
+  ```
 
   """
   @spec pred(any) :: any

@@ -9,17 +9,20 @@ defmodule Quark.Curry do
   @doc ~S"""
   This allows you to curry a function at runtime, rather than upon definition.
 
-      iex> curried_reduce_3 = curry &Enum.reduce/3
-      iex> {_, arity} = :erlang.fun_info(curried_reduce_3, :arity)
-      iex> arity
-      1
+  ```elixir
 
-      iex> curried_reduce_3 = curry &Enum.reduce/3
-      iex> import Quark.Curry
-      iex> curried_reduce_3.([1,2,3]).(42).(&(&1 + &2))
-      48
+  iex> curried_reduce_3 = curry &Enum.reduce/3
+  iex> {_, arity} = :erlang.fun_info(curried_reduce_3, :arity)
+  iex> arity
+  1
 
-  [Original code](http://blog.patrikstorm.com/function-currying-in-elixir) by [Patrik Storm](https://twitter.com/stormpat)
+  iex> curried_reduce_3 = curry &Enum.reduce/3
+  iex> import Quark.Curry
+  iex> curried_reduce_3.([1,2,3]).(42).(&(&1 + &2))
+  48
+
+  ```
+
   """
   @spec curry((... -> any)) :: (any -> any)
   def curry(fun) do
@@ -37,10 +40,14 @@ defmodule Quark.Curry do
   @doc ~S"""
   Convert a curried function to a function on pairs
 
-      iex> curried_add = fn x -> (fn y -> x + y end) end
-      iex> add = uncurry curried_add
-      iex> add.(1,2)
-      3
+  ```elixir
+
+  iex> curried_add = fn x -> (fn y -> x + y end) end
+  iex> add = uncurry curried_add
+  iex> add.(1,2)
+  3
+
+  ```
 
   """
   @spec uncurry((any -> (any -> any))) :: ((any, any) -> any)
@@ -49,10 +56,14 @@ defmodule Quark.Curry do
   @doc ~S"""
   Apply a series of arguments to a curried function
 
-      iex> import Quark.Curry, only: [uncurry: 2]
-      iex> curried_add = fn x -> (fn y -> x + y end) end
-      iex> uncurry(curried_add, [1,2])
-      3
+  ```elixir
+
+  iex> import Quark.Curry, only: [uncurry: 2]
+  iex> curried_add = fn x -> (fn y -> x + y end) end
+  iex> uncurry(curried_add, [1,2])
+  3
+
+  ```
 
   """
   @spec uncurry((any -> any), [any]) :: any
@@ -61,14 +72,18 @@ defmodule Quark.Curry do
   @doc ~S"""
   Apply an argument to a function
 
-      iex> add_one = &(&1 + 1)
-      iex> uncurry(add_one, 1)
-      2
+  ```elixir
 
-      iex> curried_add = fn x -> (fn y -> x + y end) end
-      iex> add_one = uncurry(curried_add, 1)
-      iex> add_one.(3)
-      4
+  iex> add_one = &(&1 + 1)
+  iex> uncurry(add_one, 1)
+  2
+
+  iex> curried_add = fn x -> (fn y -> x + y end) end
+  iex> add_one = uncurry(curried_add, 1)
+  iex> add_one.(3)
+  4
+
+  ```
 
   """
   @spec uncurry(fun, any) :: any
@@ -93,6 +108,9 @@ defmodule Quark.Curry do
     end
   end
 
+  @doc ~S"""
+  Define a curried private function
+  """
   defmacro defcurryp(head, do: body) do
     {fun_name, ctx, args} = head
 
