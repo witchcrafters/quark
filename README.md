@@ -119,19 +119,19 @@ one
 # => 1
 
 # Normal n-arity
- minus(4, 2, 1)
+minus(4, 2, 1)
 # => 1
 
 # Partially-applied first two arguments
- minus(100, 5).(10)
- # => 85
+minus(100, 5).(10)
+# => 85
 
 # Partially-applied first argument
- minus(100).(10).(50)
- # => 40
+minus(100).(10).(50)
+# => 40
 
 # Fully-curried
- minus.(10).(2).(1)
+minus.(10).(2).(1)
 # => 7
 
 ```
@@ -168,4 +168,4 @@ formulation at any given time, and thus reasonably future-proof.
 
 ### Sequence
 Really here for `pred` and `succ` on integers, by why stop there?
-This works with any ordered collection via a protocol.
+This works with any ordered collection via the `Quark.Sequence` protocol.
