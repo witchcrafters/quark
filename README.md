@@ -110,8 +110,8 @@ defmodule Foo do
   use Quark.Partial
 
   defpartial one(), do: 1
-  defpartial minus(a, b), do: a - b - c
-  defpartialp plus(a, b), do: a + b + c
+  defpartial minus(a, b, c), do: a - b - c
+  defpartialp plus(a, b, c), do: a + b + c
 end
 
 # Normal zero-arity
