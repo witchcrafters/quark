@@ -46,7 +46,6 @@ end
 Foo.div(10, 2)
 # => 5
 
-# => 8
 # Curried
 Foo.div.(10).(5)
 # => 2
