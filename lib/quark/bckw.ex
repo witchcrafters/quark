@@ -1,5 +1,7 @@
 defmodule Quark.BCKW do
   @moduledoc ~S"""
+  The classic [BCKW combinators](https://en.wikipedia.org/wiki/B,_C,_K,_W_system).
+  A similar idea to `SKI`, but with different primitives.
   """
 
   use Quark.Partial
