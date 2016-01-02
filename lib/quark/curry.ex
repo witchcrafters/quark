@@ -57,7 +57,6 @@ defmodule Quark.Curry do
   """
   @spec uncurry((any -> any), [any]) :: any
   def uncurry(fun, [args]), do: reduce([args], fun)
-  defp reduce([a|as], curried_fun), do: uncurry(curried_fun.(a), as)
 
   @doc ~S"""
   Apply an argument to a function
@@ -74,6 +73,8 @@ defmodule Quark.Curry do
   """
   @spec uncurry(fun, any) :: any
   def uncurry(fun, arg), do: fun.(arg)
+
+  defp reduce([a|as], curried_fun), do: uncurry(curried_fun.(a), as)
 
   defmacro __using__(_) do
     quote do
@@ -93,10 +94,10 @@ defmodule Quark.Curry do
   end
 
   defmacro defcurryp(head, do: body) do
-    {fname, ctx, args} = head
+    {fun_name, ctx, args} = head
 
     quote do
-      defp unquote({fname, ctx, []}), do: unquote(wrap(args, body))
+      defp unquote({fun_name, ctx, []}), do: unquote(wrap(args, body))
     end
   end
 
