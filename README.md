@@ -1,4 +1,5 @@
 ![](https://github.com/robot-overlord/quark/blob/master/logo.png?raw=true)
+
 ## Common combinators for Elixir
 
 | Build Status | Maintainer Message | Documentation | Hosted Package |
@@ -15,12 +16,21 @@ end
 
 ```
 
-# What's Included?
+# Summary
+
+[Elixir](http://elixir-lang.org) is a functional programming language,
+but it lacks some of the common built-in constructs that many other functional
+languages provide. This is not all-together surprising, as Elixir has a strong
+focus on handling the complexities of concurrency and fault-tolerance, rather than
+deeper functional composition on functions for reuse.
+
+## Includes
+
 - A series of classic combinators (SKI, BCKW, and fixed-points), along with friendlier aliases
 - Fully-curried and partially applied functions
 - Macros for defining curried and partially applied functions
 - Composition helpers
-  - Also a composition operator: `<|>`
+  - Composition operator: `<|>`
 - A plethora of common functional programming primitives, including:
   - `id`
   - `flip`
