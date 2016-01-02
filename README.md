@@ -20,9 +20,9 @@
   - [Compose](#compose)
   - [Common Combinators](#common-combinators)
     - [Classics](#classics)
-    - [SKI System](#ski-system)
-    - [BCKW System](#bckw-system)
-    - [Fixed Point](#fixed-point)
+      - [SKI System](#ski-system)
+      - [BCKW System](#bckw-system)
+      - [Fixed Point](#fixed-point)
     - [Sequence](#sequence)
 
 # Quick Start
