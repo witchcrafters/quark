@@ -29,3 +29,65 @@ end
   - `succ`
   - `fix`
   - `self_apply`
+
+
+##  `defcurry` and `defcurryp`
+
+```elixir
+
+defmodule Foo do
+  use Quark.Curry
+
+  defcurry div(a, b), do: a / b
+  defcurryp minus(a, b), do: a - b
+end
+
+# Regular
+Foo.div(10, 2)
+# => 5
+
+# => 8
+# Curried
+Foo.div.(10).(5)
+# => 2
+
+# Partially applied
+div_ten = Foo.div.(10)
+div_ten.(2)
+# => 5
+
+```
+
+## `defpartial` and `defpartialp`
+
+```elixir
+
+defmodule Foo do
+  use Quark.Partial
+
+  defpartial one(), do: 1
+  defpartial minus(a, b), do: a - b - c
+  defpartialp plus(a, b), do: a + b + c
+end
+
+# Normal zero-arity
+Foo.one
+# => 1
+
+# Normal n-arity
+ minus(4, 2, 1)
+# => 1
+
+# Partially-applied first two arguments
+ minus(100, 5).(10)
+ # => 85
+
+# Partially-applied first argument
+ minus(100).(10).(50)
+ # => 40
+
+# Fully-curried
+ minus.(10).(2).(1)
+# => 7
+
+```
