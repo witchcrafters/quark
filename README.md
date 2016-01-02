@@ -7,9 +7,13 @@
 
 ## Quick Start
 
-        def deps do
-          [{:quark, "~> 1.0.0"}]
-        end
+```elixir
+
+def deps do
+  [{:quark, "~> 1.0.0"}]
+end
+
+```
 
 # What's Included?
 - A series of classic combinators (SKI, BCKW, and fixed-points), along with friendlier aliases
