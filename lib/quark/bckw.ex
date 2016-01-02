@@ -1,4 +1,8 @@
 defmodule Quark.BCKW do
+  @moduledoc ~S"""
+  """
+
+  use Quark.Partial
   import Quark.Curry, only: [curry: 1]
 
   @doc ~S"""
@@ -10,16 +14,7 @@ defmodule Quark.BCKW do
 
   """
   @spec b((... -> any), (... -> any), any) :: any
-  def b(x, y, z), do: curry(x).(curry(y).(z))
-
-  @spec b((... -> any), (... -> any)) :: (any -> any)
-  def b(x, y), do: b.(x).(y)
-
-  @spec b((... -> any)) :: ((... -> any) -> any)
-  def b(x), do: b.(x)
-
-  @spec b() :: ((... -> any) -> ((... -> any) -> any))
-  def b(), do: curry(&b/3)
+  defpartial b(x, y, z), do: curry(x).(curry(y).(z))
 
   @doc ~S"""
   Reverse (first) two arguments (`flip`)
@@ -33,7 +28,7 @@ defmodule Quark.BCKW do
 
   """
   @spec c((... -> any)) :: (... -> any)
-  def c(fun), do: &(curry(fun).(&2).(&1))
+  defpartial c(fun), do: &(curry(fun).(&2).(&1))
 
   @doc ~S"""
   Apply the same argument to a functon twice
@@ -47,5 +42,5 @@ defmodule Quark.BCKW do
 
   """
   @spec w((... -> any)) :: any
-  def w(fun), do: &(curry(fun).(&1).(&1))
+  defpartial w(fun), do: &(curry(fun).(&1).(&1))
 end

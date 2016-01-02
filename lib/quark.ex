@@ -1,8 +1,22 @@
 defmodule Quark do
   @moduledoc ~S"""
-  For performance reasons, many of the combinators are given
-  non-combinatory implementations.
+  For convenience, many of the most common combinators are available here and given
+  firendlier names.
+
+  Due to performance reasons, many of the combinators are given non-combinatory
+  implementations (ie: not everything is expressed in terms `s` and `k`)
   """
+
+  use Quark.Partial
+
+  defdelegate compose(a, b), to: Quark.Compose
+  defdelegate a <|> b, to: Quark.Compose
+
+  defdelegate fix(f), to: Quark.FixedPoint
+
+  defdelegate origin(x), to: Quark.Sequence
+  defdelegate succ(x), to: Quark.Sequence
+  defdelegate pred(x), to: Quark.Sequence
 
   defdelegate flip(a, b), to: Quark.BCKW, as: :c
   defdelegate id(x), to: Quark.SKI, as: :i
@@ -24,7 +38,7 @@ defmodule Quark do
 
   """
   @spec second(any, any) :: any
-  def second(_, b), do: b
+  defpartial second(a, b), do: b
 
   @doc ~S"""
   Apply a function to itself
@@ -36,11 +50,8 @@ defmodule Quark do
       10
 
   """
-  @spec m() :: (... -> any)
-  def m(), do: &(m(&1))
-
   @spec m((... -> any)) :: (... -> any)
-  def m(fun) do
+  defpartial m(fun) do
     import Quark.Curry, only: [curry: 1]
     c_fun = curry(fun)
     &c_fun.(c_fun.(&1))

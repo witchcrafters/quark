@@ -26,6 +26,7 @@ defmodule Quark.FixedPoint do
 
   """
 
+  use Quark.Partial
   import Quark.Curry, only: [curry: 1]
 
   defdelegate fix(), to: __MODULE__, as: :y
@@ -46,11 +47,8 @@ defmodule Quark.FixedPoint do
       362880
 
    """
-  @spec y() :: (any -> any)
-  def y(), do: &y(&1)
-
   @spec y((... -> any)) :: (any -> any)
-  def y(fun) do
+  defpartial y(fun) do
     (fn x -> x.(x) end).(fn y ->
       curry(fun).(fn arg -> y.(y).(arg) end)
     end)
@@ -71,15 +69,10 @@ defmodule Quark.FixedPoint do
       362880
 
   """
-  @spec turing() :: (any -> any)
-  def turing(), do: turing_inner.(turing_inner())
-
   @spec turing((... -> any)) :: (any -> any)
-  def turing(fun), do: turing.(fun)
+  defpartial turing(fun), do: turing_inner.(turing_inner).(fun)
 
-  defp turing_inner(), do: &turing_inner(&1)
-  defp turing_inner(x), do: &turing_inner(x, &1)
-  defp turing_inner(x, y) do
+  defpartialp turing_inner(x, y) do
     cx = curry(x)
     cy = curry(y)
     cy.(&(cx.(cx).(cy).(&1)))
@@ -100,12 +93,6 @@ defmodule Quark.FixedPoint do
       362880
 
   """
-  @spec z() :: (any -> any)
-  def z(), do: curry(&z/2)
-
-  @spec z((... -> any)) :: (any -> any)
-  def z(g), do: z().(g)
-
   @spec z((... -> any), any) :: (any -> any)
-  def z(g, v), do: g.(z.(g)).(v)
+  defpartial z(g, v), do: g.(z.(g)).(v)
 end

@@ -14,6 +14,7 @@ defmodule Quark.Compose do
   provides the opposite in the form of `*_forward` functions.
   """
 
+  use Quark.Partial
   import Quark, only: [id: 1]
 
   @doc ~S"""
@@ -37,6 +38,7 @@ defmodule Quark.Compose do
   """
   @spec compose([(... -> any)]) :: (... -> any)
   def compose(func_list), do: List.foldr(func_list, &id/1, &compose(&1,&2))
+  def compose(), do: &compose(&1)
 
   @doc ~S"""
   Infix compositon operator
@@ -64,7 +66,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose_forward((... -> any), (... -> any)) :: (... -> any)
-  def compose_forward(f,g), do: &(g.(f.(&1)))
+  defpartial compose_forward(f,g), do: &(g.(f.(&1)))
 
 
   @doc ~S"""
@@ -77,5 +79,5 @@ defmodule Quark.Compose do
 
   """
   @spec compose_list_forward([(... -> any)]) :: (... -> any)
-  def compose_list_forward(func_list), do: Enum.reduce(func_list, &id/1, &compose/2)
+  defpartial compose_list_forward(func_list), do: Enum.reduce(func_list, &id/1, &compose/2)
 end

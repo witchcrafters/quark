@@ -5,6 +5,8 @@ defmodule Quark.SKI do
   though generally not efficiently.
   """
 
+  use Quark.Partial
+
   @doc ~S"""
   The identity combinator
 
@@ -16,7 +18,7 @@ defmodule Quark.SKI do
 
   """
   @spec i(any) :: any
-  def i(x), do: x
+  defpartial i(x), do: x
 
   @doc ~S"""
   The constant ("Konstant") combinator. Returns the first argument, unchanged, and
@@ -34,9 +36,7 @@ defmodule Quark.SKI do
 
   """
   @spec k(any, any) :: any
-  def k(x, _), do: x
-  def k(x), do: &k(x, &1)
-  def k(), do: fn x -> fn y -> k(x).(y) end end
+  defpartial k(x, y), do: x
 
   @doc ~S"""
   The "substitution" combinator. Applies the last argument to the first two, and then
@@ -49,7 +49,7 @@ defmodule Quark.SKI do
 
   """
   @spec s((... -> any), (... -> any), any) :: any
-  def s(x, y, z) do
+  defpartial s(x, y, z) do
     sub_x = &x.(z, &1)
     sub_y = y.(z)
 
