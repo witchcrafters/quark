@@ -1,0 +1,240 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.11.3">
+    <title>Quark.Partial – Quark v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    <script src="dist/sidebar_items.js"></script>
+  </head>
+  <body data-type="modules">
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <i class="icon-menu"></i>
+</button>
+<section class="sidebar">
+  <button class="sidebar-toggle">
+    <i class="icon-menu"></i>
+  </button>
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Quark
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+    
+      <img src="assets/logo.png" alt="Quark" class="sidebar-projectImage">
+    
+  </a>
+
+  <div class="sidebar-search">
+    <i class="icon-search"></i>
+    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+      <li><a id="protocols-list" href="#full-list">Protocols</a></li>
+    
+  </ul>
+
+  <ul id="full-list" class="sidebar-fullList"></ul>
+  <div class="sidebar-noResults"></div>
+</section>
+
+<section class="content">
+  <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Quark v1.0.0</small>
+        Quark.Partial
+        
+        
+          <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L1" title="View Source" class="view-source" rel="help">
+            <i class="icon-code"></i>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc" class="docstring">
+          <p>Provide curried functions, that can also be partially bound without dot notation.
+Partially applying a function will always return a fully-curried function.</p>
+<p>Please note that these will use all of the arities up to the defined function.
+For example, <code class="inline">defpartial foo(a, b, c), do: a + b + c</code> will generate <code class="inline">foo/0</code>, <code class="inline">foo/1</code>,
+<code class="inline">foo/2</code>, and <code class="inline">foo/3</code>. If you need to use an arity in the range below the original
+function, fall back to <code class="inline">defcurry</code> and partially apply manually.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <i class="icon-link"></i>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+
+          
+  <div class="summary-macros summary">
+    <h2>
+      <a href="#macros">Macros</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#defpartial/2">defpartial(arg, list)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>A convenience on <code class="inline">defcurry</code>. Generates a series of partially-bound applications
+of a fully-curried function, for all arities <em>at and below</em> the user-specified
+arity. For instance, <code class="inline">defpartial add(a,b), do: a + b</code> will generate <code class="inline">add/0</code>,
+<code class="inline">add/1</code> and <code class="inline">add/2</code></p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#defpartialp/2">defpartialp(arg, list)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p><code class="inline">defpartial</code>, but generates private functions</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+
+      
+        <section id="macros" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#macros">
+              <i class="icon-link"></i>
+            </a>
+            Macros
+          </h1>
+          <div class="detail" id="defpartial/2">
+  <div class="detail-header">
+    <a href="#defpartial/2" class="detail-link" title="Link to this macro">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">defpartial(arg, list)</span>
+      
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L44" class="view-source" rel="help" title="View Source">
+       <i class="icon-code"></i>
+     </a>
+    
+  </div>
+  
+  <section class="docstring">
+    <p>A convenience on <code class="inline">defcurry</code>. Generates a series of partially-bound applications
+of a fully-curried function, for all arities <em>at and below</em> the user-specified
+arity. For instance, <code class="inline">defpartial add(a,b), do: a + b</code> will generate <code class="inline">add/0</code>,
+<code class="inline">add/1</code> and <code class="inline">add/2</code>.</p>
+<pre><code class="elixir">defpartialp minus(a, b, c), do: a - b - c
+
+minus(3, 2, 1)
+# =&gt; 0
+
+minus.(3).(2).(1)
+# =&gt; 0
+
+below_ten = minus(5)
+below_ten.(2, 1)
+# =&gt; 7
+
+below_five = minus(20, 15)
+below_five.(2)
+# =&gt; 3</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="defpartialp/2">
+  <div class="detail-header">
+    <a href="#defpartialp/2" class="detail-link" title="Link to this macro">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">defpartialp(arg, list)</span>
+      
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L78" class="view-source" rel="help" title="View Source">
+       <i class="icon-code"></i>
+     </a>
+    
+  </div>
+  
+  <section class="docstring">
+    <p><code class="inline">defpartial</code>, but generates private functions</p>
+<pre><code class="elixir">defpartialp minus(a, b, c), do: a - b - c
+
+minus(3, 2, 1)
+# =&gt; 0
+
+minus.(3).(2).(1)
+# =&gt; 0
+
+below10 = minus(5)
+below10.(2, 1)
+# =&gt; 7
+
+below5 = minus(10, 5)
+below5.(2)
+# =&gt; 3</code></pre>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+        <footer class="footer">
+      <p>
+        <span class="line">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.3),
+        </span>
+        <span class="line">
+          designed by
+          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+      </p>
+      <button class="night-mode-toggle" />
+    </footer>
+  </div>
+</section>
+</div>
+  <script src="dist/app-6d2e071366.js"></script>
+  </body>
+</html>
+
