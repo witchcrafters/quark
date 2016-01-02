@@ -31,6 +31,7 @@ end
   - `self_apply`
 
 
+# Examples
 ##  `defcurry` and `defcurryp`
 
 ```elixir
@@ -43,15 +44,15 @@ defmodule Foo do
 end
 
 # Regular
-Foo.div(10, 2)
+div(10, 2)
 # => 5
 
 # Curried
-Foo.div.(10).(5)
+div.(10).(5)
 # => 2
 
 # Partially applied
-div_ten = Foo.div.(10)
+div_ten = div.(10)
 div_ten.(2)
 # => 5
 
@@ -70,7 +71,7 @@ defmodule Foo do
 end
 
 # Normal zero-arity
-Foo.one
+one
 # => 1
 
 # Normal n-arity
