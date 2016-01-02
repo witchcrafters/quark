@@ -1,4 +1,4 @@
-defmodule Quark.Lazy do
+defmodule Quark.Partial do
   @moduledoc ~S"""
   RENAME TO "Quark.Partial"
   Not *actually* lazy, but want to keep apart from `defcurry` so that users can
@@ -9,11 +9,11 @@ defmodule Quark.Lazy do
 
   defmacro __using__(_) do
     quote do
-      import Quark.Lazy, only: [deflazy: 2, deflazyp: 2]
+      import Quark.Partial, only: [defpartial: 2, defpartialp: 2]
     end
   end
 
-  defmacro deflazy(head, do: body), do: rehydrate(head, body)
+  defmacro defpartial(head, do: body), do: rehydrate(head, body)
 
   defp rehydrate({fun_name, ctx, []}, body) do
     quote do defcurry(head, do: body) end

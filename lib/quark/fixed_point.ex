@@ -12,13 +12,12 @@ defmodule Quark.FixedPoint do
       ...>     n -> n * fac.(n - 1)
       ...>   end
       ...> end
-      iex> factorial = Quark.FixedPoint.y(fac)
+      iex> factorial = y fac
       iex> factorial.(9)
       362880
 
   The resulting functions will always be curried
 
-      iex> import Quark.FixedPoint, only: [y: 1]
       iex> import Quark.SKI, only: [s: 3]
       iex> one_run = y(&s/3)
       iex> {_, arity} = :erlang.fun_info(one_run, :arity)
@@ -28,12 +27,13 @@ defmodule Quark.FixedPoint do
   """
 
   import Quark.Curry, only: [curry: 1]
-  import Quark.BCKW, only: [b: 0, b: 1, b: 2, b: 3]
+
+  defdelegate fix(), to: __MODULE__, as: :y
+  defdelegate fix(a), to: __MODULE__, as: :y
 
   @doc ~S"""
   The famous Y-combinator. The resulting function will always be curried.
 
-      iex> import Quark.FixedPoint, only: [y: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0
@@ -59,7 +59,6 @@ defmodule Quark.FixedPoint do
   @doc ~S"""
   Alan Turing's fix-point combinator. This is the call-by-value formulation.
 
-      iex> import Quark.FixedPoint, only: [turing: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0
@@ -89,7 +88,6 @@ defmodule Quark.FixedPoint do
   @doc ~S"""
   A [normal order](https://en.wikipedia.org/wiki/Evaluation_strategy#Normal_order) fixed point
 
-      iex> import Quark.FixedPoint, only: [z: 1]
       iex> fac = fn fac ->
       ...>   fn
       ...>     0 -> 0

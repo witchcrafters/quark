@@ -7,7 +7,7 @@ defprotocol Quark.Sequence do
 
   For instance, integers are generally thought of as centering around 0
 
-      iex> Quark.Sequence.origin(9)
+      iex> origin(9)
       0
 
   """
@@ -19,10 +19,9 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number above.
 
-      iex> Quark.Sequence.succ(1)
+      iex> succ(1)
       2
 
-      iex> import Quark.Sequence
       iex> 10 |> origin |> succ |> succ
       2
 
@@ -35,10 +34,9 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number below.
 
-      iex> Quark.Sequence.pred(10)
+      iex> pred(10)
       9
 
-      iex> import Quark.Sequence
       iex> 42 |> origin |> pred |> pred
       -2
 

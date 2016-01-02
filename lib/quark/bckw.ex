@@ -4,7 +4,6 @@ defmodule Quark.BCKW do
   @doc ~S"""
   Normal (binary) function composition
 
-      iex> import Quark.BCKW
       iex> sum_plus_one = b(&(&1 + 1), &Enum.sum/1)
       iex> [1,2,3] |> sum_plus_one.()
       7
@@ -25,11 +24,9 @@ defmodule Quark.BCKW do
   @doc ~S"""
   Reverse (first) two arguments (`flip`)
 
-      iex> import Quark.BCKW
       iex> c(&div/2).(1, 2)
       2
 
-      iex> import Quark.BCKW
       iex> reverse_concat = c(&Enum.concat/2)
       iex> reverse_concat.([1,2,3], [4,5,6])
       [4,5,6,1,2,3]
@@ -41,12 +38,10 @@ defmodule Quark.BCKW do
   @doc ~S"""
   Apply the same argument to a functon twice
 
-      iex> import Quark.BCKW
       iex> repeat = w(&Enum.concat/2)
       iex> repeat.([1,2])
       [1,2,1,2]
 
-      iex> import Quark.BCKW
       iex> w(&Enum.zip/2).([1,2,3])
       [{1, 1}, {2, 2}, {3, 3}]
 
