@@ -2,9 +2,9 @@
 
 ## Common combinators for Elixir
 
-| Build Status | Maintainer Message | Documentation | Hosted Package |
-|--------------|--------------------|---------------|----------------|
-| [![Circle CI](https://circleci.com/gh/robot-overlord/quark/tree/master.svg?style=svg)](https://circleci.com/gh/robot-overlord/quark/tree/master) | ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) |[robotoverlord.io/quark](http://www.robotoverlord.io/quark/api-reference.html) | [Hex](https://hex.pm/packages/quark) |
+| Build Status | Maintainer Message | Documentation | Doc Coverage | Hosted Package |
+|--------------|--------------------|---------------|--------------|----------------|
+| [![Circle CI](https://circleci.com/gh/robot-overlord/quark/tree/master.svg?style=svg)](https://circleci.com/gh/robot-overlord/quark/tree/master) | ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) |[robotoverlord.io/quark](http://www.robotoverlord.io/quark/api-reference.html) | [![Inline docs](http://inch-ci.org/github/robot-overlord/quark.svg?branch=master)](http://inch-ci.org/github/robot-overlord/quark) | [Hex](https://hex.pm/packages/quark) |
 
 
 # Table of Contents
