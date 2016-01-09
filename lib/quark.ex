@@ -9,6 +9,7 @@ defmodule Quark do
 
   use Quark.Partial
 
+  defdelegate compose(list), to: Quark.Compose
   defdelegate compose(a, b), to: Quark.Compose
   defdelegate a <|> b, to: Quark.Compose
 

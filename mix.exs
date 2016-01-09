@@ -8,7 +8,7 @@ defmodule Quark.Mixfile do
      description: "Common combinators for Elixir",
      package: package,
 
-     version: "1.0.1",
+     version: "1.0.2",
      elixir:  "~> 1.1",
 
      source_url:   "https://github.com/robot-overlord/quark",
