@@ -18,7 +18,7 @@ defmodule Quark do
   defdelegate succ(x), to: Quark.Sequence
   defdelegate pred(x), to: Quark.Sequence
 
-  defdelegate flip(a, b), to: Quark.BCKW, as: :c
+  defdelegate flip(fun), to: Quark.BCKW, as: :c
   defdelegate id(x), to: Quark.SKI, as: :i
 
   defdelegate constant(a, b), to: Quark.SKI, as: :k

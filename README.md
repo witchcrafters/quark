@@ -30,7 +30,7 @@
 ```elixir
 
 def deps do
-  [{:quark, "~> 1.0.0"}]
+  [{:quark, "~> 1.0.1"}]
 end
 
 ```
