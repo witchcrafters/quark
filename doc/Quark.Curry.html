@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.Curry – Quark v1.0.0</title>
+    <title>Quark.Curry – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.Curry
         
         
@@ -148,6 +148,9 @@ partial application on any curried function.</p>
     <a href="#defcurryp/2">defcurryp(head, list)</a>
   </div>
   
+    <div class="summary-synopsis"><p>Define a curried private function</p>
+</div>
+  
 </div>
 
   </div>
@@ -175,7 +178,7 @@ partial application on any curried function.</p>
     </a>
     <span class="signature">curry(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L25" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L28" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -192,7 +195,8 @@ partial application on any curried function.</p>
   
   <section class="docstring">
     <p>This allows you to curry a function at runtime, rather than upon definition.</p>
-<pre><code class="iex elixir">iex&gt; curried_reduce_3 = curry &amp;Enum.reduce/3
+<pre><code class="elixir">
+iex&gt; curried_reduce_3 = curry &amp;Enum.reduce/3
 iex&gt; {_, arity} = :erlang.fun_info(curried_reduce_3, :arity)
 iex&gt; arity
 1
@@ -200,8 +204,8 @@ iex&gt; arity
 iex&gt; curried_reduce_3 = curry &amp;Enum.reduce/3
 iex&gt; import Quark.Curry
 iex&gt; curried_reduce_3.([1,2,3]).(42).(&amp;(&amp;1 + &amp;2))
-48</code></pre>
-<p><a href="http://blog.patrikstorm.com/function-currying-in-elixir">Original code</a> by <a href="https://twitter.com/stormpat">Patrik Storm</a></p>
+48
+</code></pre>
 
   </section>
 </div>
@@ -212,7 +216,7 @@ iex&gt; curried_reduce_3.([1,2,3]).(42).(&amp;(&amp;1 + &amp;2))
     </a>
     <span class="signature">uncurry(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L47" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L54" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -229,10 +233,12 @@ iex&gt; curried_reduce_3.([1,2,3]).(42).(&amp;(&amp;1 + &amp;2))
   
   <section class="docstring">
     <p>Convert a curried function to a function on pairs</p>
-<pre><code class="iex elixir">iex&gt; curried_add = fn x -&gt; (fn y -&gt; x + y end) end
+<pre><code class="elixir">
+iex&gt; curried_add = fn x -&gt; (fn y -&gt; x + y end) end
 iex&gt; add = uncurry curried_add
 iex&gt; add.(1,2)
-3</code></pre>
+3
+</code></pre>
 
   </section>
 </div>
@@ -243,7 +249,7 @@ iex&gt; add.(1,2)
     </a>
     <span class="signature">uncurry(fun, arg)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L59" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L70" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -262,14 +268,16 @@ iex&gt; add.(1,2)
   
   <section class="docstring">
     <p>Apply an argument to a function</p>
-<pre><code class="iex elixir">iex&gt; add_one = &amp;(&amp;1 + 1)
+<pre><code class="elixir">
+iex&gt; add_one = &amp;(&amp;1 + 1)
 iex&gt; uncurry(add_one, 1)
 2
 
 iex&gt; curried_add = fn x -&gt; (fn y -&gt; x + y end) end
 iex&gt; add_one = uncurry(curried_add, 1)
 iex&gt; add_one.(3)
-4</code></pre>
+4
+</code></pre>
 
   </section>
 </div>
@@ -292,7 +300,7 @@ iex&gt; add_one.(3)
     </a>
     <span class="signature">defcurry(head, list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L88" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L103" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -310,14 +318,15 @@ iex&gt; add_one.(3)
     </a>
     <span class="signature">defcurryp(head, list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L96" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/curry.ex#L114" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    
+    <p>Define a curried private function</p>
+
   </section>
 </div>
 

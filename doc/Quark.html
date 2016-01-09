@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark – Quark v1.0.0</title>
+    <title>Quark – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark
         
         
@@ -145,10 +145,10 @@ implementations (ie: not everything is expressed in terms <code class="inline">s
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#flip/2">flip(a, b)</a>
+    <a href="#flip/1">flip(fun)</a>
   </div>
   
-    <div class="summary-synopsis"><p>See <code class="inline">Quark.BCKW.c/2</code></p>
+    <div class="summary-synopsis"><p>See <a href="Quark.BCKW.html#c/1"><code class="inline">Quark.BCKW.c/1</code></a></p>
 </div>
   
 </div>
@@ -353,12 +353,12 @@ implementations (ie: not everything is expressed in terms <code class="inline">s
 
   </section>
 </div>
-<div class="detail" id="flip/2">
+<div class="detail" id="flip/1">
   <div class="detail-header">
-    <a href="#flip/2" class="detail-link" title="Link to this function">
+    <a href="#flip/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">flip(a, b)</span>
+    <span class="signature">flip(fun)</span>
       
       <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L21" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
@@ -367,7 +367,7 @@ implementations (ie: not everything is expressed in terms <code class="inline">s
   </div>
   
   <section class="docstring">
-    <p>See <code class="inline">Quark.BCKW.c/2</code>.</p>
+    <p>See <a href="Quark.BCKW.html#c/1"><code class="inline">Quark.BCKW.c/1</code></a>.</p>
 
   </section>
 </div>
@@ -396,7 +396,7 @@ implementations (ie: not everything is expressed in terms <code class="inline">s
     </a>
     <span class="signature">m()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L54" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L62" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -404,11 +404,13 @@ implementations (ie: not everything is expressed in terms <code class="inline">s
   
   <section class="docstring">
     <p>Apply a function to itself</p>
-<pre><code class="iex elixir">iex&gt; import Quark, only: [m: 1]
+<pre><code class="elixir">
+iex&gt; import Quark, only: [m: 1]
 iex&gt; add_one = fn x -&gt; x + 1 end
 iex&gt; add_two = m(add_one)
 iex&gt; add_two.(8)
-10</code></pre>
+10
+</code></pre>
 
   </section>
 </div>
@@ -419,7 +421,7 @@ iex&gt; add_two.(8)
     </a>
     <span class="signature">m(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L54" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L62" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -481,7 +483,7 @@ iex&gt; add_two.(8)
     </a>
     <span class="signature">second()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L45" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -491,11 +493,13 @@ iex&gt; add_two.(8)
     <p>Opposite of <code class="inline">first</code> (the <code class="inline">k</code> combinator).</p>
 <p>Returns the <em>second</em> of two arguments. Can be used to repeatedly apply the same value
 in functions such as folds.</p>
-<pre><code class="iex elixir">iex&gt; Quark.second(43, 42)
+<pre><code class="elixir">
+iex&gt; Quark.second(43, 42)
 42
 
 iex&gt; Enum.reduce([1,2,3], [], &amp;Quark.second/2)
-[]</code></pre>
+[]
+</code></pre>
 
   </section>
 </div>
@@ -506,7 +510,7 @@ iex&gt; Enum.reduce([1,2,3], [], &amp;Quark.second/2)
     </a>
     <span class="signature">second(a)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L45" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -523,7 +527,7 @@ iex&gt; Enum.reduce([1,2,3], [], &amp;Quark.second/2)
     </a>
     <span class="signature">second(a, b)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L45" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -549,7 +553,7 @@ iex&gt; Enum.reduce([1,2,3], [], &amp;Quark.second/2)
     </a>
     <span class="signature">self_apply()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L60" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L68" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -567,7 +571,7 @@ iex&gt; Enum.reduce([1,2,3], [], &amp;Quark.second/2)
     </a>
     <span class="signature">self_apply(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L61" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark.ex#L69" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

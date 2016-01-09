@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.Sequence – Quark v1.0.0</title>
+    <title>Quark.Sequence – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.Sequence
         
           <small>protocol</small>
@@ -180,7 +180,7 @@
     </a>
     <span class="signature">origin(specimen)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L15" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L19" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -198,8 +198,10 @@
   <section class="docstring">
     <p>The beginning of the sequence.</p>
 <p>For instance, integers are generally thought of as centering around 0</p>
-<pre><code class="iex elixir">iex&gt; origin(9)
-0</code></pre>
+<pre><code class="elixir">
+iex&gt; origin(9)
+0
+</code></pre>
 
   </section>
 </div>
@@ -210,7 +212,7 @@
     </a>
     <span class="signature">pred(element)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L45" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L57" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -228,11 +230,13 @@
   <section class="docstring">
     <p>The <code class="inline">pred</code>essor in the sequence.</p>
 <p>For integers, this is the number below.</p>
-<pre><code class="iex elixir">iex&gt; pred(10)
+<pre><code class="elixir">
+iex&gt; pred(10)
 9
 
 iex&gt; 42 |&gt; origin |&gt; pred |&gt; pred
--2</code></pre>
+-2
+</code></pre>
 
   </section>
 </div>
@@ -243,7 +247,7 @@ iex&gt; 42 |&gt; origin |&gt; pred |&gt; pred
     </a>
     <span class="signature">succ(element)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L30" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/sequence.ex#L38" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -261,11 +265,13 @@ iex&gt; 42 |&gt; origin |&gt; pred |&gt; pred
   <section class="docstring">
     <p>The <code class="inline">succ</code>essor in sequence.</p>
 <p>For integers, this is the number above.</p>
-<pre><code class="iex elixir">iex&gt; succ(1)
+<pre><code class="elixir">
+iex&gt; succ(1)
 2
 
 iex&gt; 10 |&gt; origin |&gt; succ |&gt; succ
-2</code></pre>
+2
+</code></pre>
 
   </section>
 </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.FixedPoint – Quark v1.0.0</title>
+    <title>Quark.FixedPoint – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.FixedPoint
         
         
@@ -78,7 +78,8 @@
           <p>Fixed point combinators generalize the idea of a recursive function. This can
 be used to great effect, simplifying many definitions.</p>
 <p>For example, here is the factorial function written in terms of <a href="#y/1"><code class="inline">y/1</code></a>:</p>
-<pre><code class="iex elixir">iex&gt; fac = fn fac -&gt;
+<pre><code class="elixir">
+iex&gt; fac = fn fac -&gt;
 ...&gt;   fn
 ...&gt;     0 -&gt; 0
 ...&gt;     1 -&gt; 1
@@ -87,13 +88,16 @@ be used to great effect, simplifying many definitions.</p>
 ...&gt; end
 iex&gt; factorial = y fac
 iex&gt; factorial.(9)
-362880</code></pre>
+362880
+</code></pre>
 <p>The resulting functions will always be curried</p>
-<pre><code class="iex elixir">iex&gt; import Quark.SKI, only: [s: 3]
+<pre><code class="elixir">
+iex&gt; import Quark.SKI, only: [s: 3]
 iex&gt; one_run = y(&amp;s/3)
 iex&gt; {_, arity} = :erlang.fun_info(one_run, :arity)
 iex&gt; arity
-1</code></pre>
+1
+</code></pre>
 
         </section>
       
@@ -210,7 +214,7 @@ iex&gt; arity
     </a>
     <span class="signature">fix()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L32" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L40" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -228,7 +232,7 @@ iex&gt; arity
     </a>
     <span class="signature">fix(a)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L41" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -246,7 +250,7 @@ iex&gt; arity
     </a>
     <span class="signature">turing()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L73" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L89" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -254,7 +258,8 @@ iex&gt; arity
   
   <section class="docstring">
     <p>Alan Turing’s fix-point combinator. This is the call-by-value formulation.</p>
-<pre><code class="iex elixir">iex&gt; fac = fn fac -&gt;
+<pre><code class="elixir">
+iex&gt; fac = fn fac -&gt;
 ...&gt;   fn
 ...&gt;     0 -&gt; 0
 ...&gt;     1 -&gt; 1
@@ -263,7 +268,8 @@ iex&gt; arity
 ...&gt; end
 iex&gt; factorial = turing(fac)
 iex&gt; factorial.(9)
-362880</code></pre>
+362880
+</code></pre>
 
   </section>
 </div>
@@ -274,7 +280,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">turing(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L73" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L89" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -300,7 +306,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">y()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L51" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L63" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -308,16 +314,18 @@ iex&gt; factorial.(9)
   
   <section class="docstring">
     <p>The famous Y-combinator. The resulting function will always be curried.</p>
-<p>   iex&gt; fac = fn fac -&gt;
-   …&gt;   fn
-   …&gt;     0 -&gt; 0
-   …&gt;     1 -&gt; 1
-   …&gt;     n -&gt; n * fac.(n - 1)
-   …&gt;   end
-   …&gt; end
-   iex&gt; factorial = y(fac)
-   iex&gt; factorial.(9)
-   362880</p>
+<pre><code class="elixir">
+iex&gt; fac = fn fac -&gt;
+...&gt;   fn
+...&gt;     0 -&gt; 0
+...&gt;     1 -&gt; 1
+...&gt;     n -&gt; n * fac.(n - 1)
+...&gt;   end
+...&gt; end
+iex&gt; factorial = y(fac)
+iex&gt; factorial.(9)
+362880
+</code></pre>
 
   </section>
 </div>
@@ -328,7 +336,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">y(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L51" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L63" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -354,7 +362,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">z()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L97" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L117" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -362,7 +370,8 @@ iex&gt; factorial.(9)
   
   <section class="docstring">
     <p>A <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Normal_order">normal order</a> fixed point</p>
-<pre><code class="iex elixir">iex&gt; fac = fn fac -&gt;
+<pre><code class="elixir">
+iex&gt; fac = fn fac -&gt;
 ...&gt;   fn
 ...&gt;     0 -&gt; 0
 ...&gt;     1 -&gt; 1
@@ -371,7 +380,8 @@ iex&gt; factorial.(9)
 ...&gt; end
 iex&gt; factorial = z(fac)
 iex&gt; factorial.(9)
-362880</code></pre>
+362880
+</code></pre>
 
   </section>
 </div>
@@ -382,7 +392,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">z(g)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L97" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L117" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -399,7 +409,7 @@ iex&gt; factorial.(9)
     </a>
     <span class="signature">z(g, v)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L97" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/fixed_point.ex#L117" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

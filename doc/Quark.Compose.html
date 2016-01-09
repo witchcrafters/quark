@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.Compose – Quark v1.0.0</title>
+    <title>Quark.Compose – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.Compose
         
         
@@ -77,9 +77,11 @@
         <section id="moduledoc" class="docstring">
           <p>Function composition is taking two functions, and joining them together to create
 a new function. For example:</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = compose([&amp;(&amp;1 + 1), &amp;Enum.sum/1])
+<pre><code class="elixir">
+iex&gt; sum_plus_one = compose([&amp;(&amp;1 + 1), &amp;Enum.sum/1])
 iex&gt; sum_plus_one.([1,2,3])
-7</code></pre>
+7
+</code></pre>
 <p>In this case, we have joined <code class="inline">Enum.sum</code> with a function that adds one, to create
 a new function that takes a list, sums it, and adds one.</p>
 <p>Note that composition normally applies <em>from right to left</em>, though <a href="Quark.html"><code class="inline">Quark</code></a>
@@ -201,7 +203,7 @@ order versus what one would normally expect (left to right rather than right to 
     </a>
     <span class="signature">g &lt;|&gt; f</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L74" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -218,7 +220,8 @@ order versus what one would normally expect (left to right rather than right to 
   
   <section class="docstring">
     <p>Infix compositon operator</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = fn x -&gt; x + 1 end &lt;|&gt; &amp;Enum.sum/1
+<pre><code class="elixir">
+iex&gt; sum_plus_one = fn x -&gt; x + 1 end &lt;|&gt; &amp;Enum.sum/1
 iex&gt; sum_plus_one.([1,2,3])
 7
 
@@ -226,7 +229,8 @@ iex&gt; add_one = &amp;(&amp;1 + 1)
 iex&gt; piped = [1,2,3] |&gt; Enum.sum |&gt; add_one.()
 iex&gt; composed = [1,2,3] |&gt; ((add_one &lt;|&gt; &amp;Enum.sum/1)).()
 iex&gt; piped == composed
-true</code></pre>
+true
+</code></pre>
 
   </section>
 </div>
@@ -237,7 +241,7 @@ true</code></pre>
     </a>
     <span class="signature">compose()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L53" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -254,7 +258,7 @@ true</code></pre>
     </a>
     <span class="signature">compose(func_list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L40" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L52" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -271,9 +275,11 @@ true</code></pre>
   
   <section class="docstring">
     <p>Function composition, from the tail of the list to the head</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = compose([&amp;(&amp;1 + 1), &amp;Enum.sum/1])
+<pre><code class="elixir">
+iex&gt; sum_plus_one = compose([&amp;(&amp;1 + 1), &amp;Enum.sum/1])
 iex&gt; [1,2,3] |&gt; sum_plus_one.()
-7</code></pre>
+7
+</code></pre>
 
   </section>
 </div>
@@ -284,7 +290,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose(g, f)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L29" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L37" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -301,9 +307,11 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
   
   <section class="docstring">
     <p>Function composition</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = compose(&amp;(&amp;1 + 1), &amp;Enum.sum/1)
+<pre><code class="elixir">
+iex&gt; sum_plus_one = compose(&amp;(&amp;1 + 1), &amp;Enum.sum/1)
 iex&gt; [1,2,3] |&gt; sum_plus_one.()
-7</code></pre>
+7
+</code></pre>
 
   </section>
 </div>
@@ -314,7 +322,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose_forward()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L69" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L89" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -322,9 +330,11 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
   
   <section class="docstring">
     <p>Function composition, from the back of the lift to the front</p>
-<p>   iex&gt; sum_plus_one = compose_forward(&amp;(Enum.sum(&amp;1)), &amp;(&amp;1 + 1))
-   iex&gt; [1,2,3] |&gt; sum_plus_one.()
-   7</p>
+<pre><code class="elixir">
+iex&gt; sum_plus_one = compose_forward(&amp;(Enum.sum(&amp;1)), &amp;(&amp;1 + 1))
+iex&gt; [1,2,3] |&gt; sum_plus_one.()
+7
+</code></pre>
 
   </section>
 </div>
@@ -335,7 +345,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose_forward(f)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L69" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L89" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -352,7 +362,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose_forward(f, g)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L69" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L89" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -378,7 +388,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose_list_forward()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L82" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L106" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -387,9 +397,11 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
   <section class="docstring">
     <p>Compose functions, from the head of the list of functions. The is the reverse
 order versus what one would normally expect (left to right rather than right to left).</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = compose_list_forward([&amp;Enum.sum/1, &amp;(&amp;1 + 1)])
+<pre><code class="elixir">
+iex&gt; sum_plus_one = compose_list_forward([&amp;Enum.sum/1, &amp;(&amp;1 + 1)])
 iex&gt; [1,2,3] |&gt; sum_plus_one.()
-7</code></pre>
+7
+</code></pre>
 
   </section>
 </div>
@@ -400,7 +412,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">compose_list_forward(func_list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L82" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/compose.ex#L106" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

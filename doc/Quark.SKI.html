@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.SKI – Quark v1.0.0</title>
+    <title>Quark.SKI – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.SKI
         
         
@@ -191,7 +191,7 @@ the first two to each other</p>
     </a>
     <span class="signature">i()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L21" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L25" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -199,11 +199,13 @@ the first two to each other</p>
   
   <section class="docstring">
     <p>The identity combinator</p>
-<pre><code class="iex elixir">iex&gt; i(1)
+<pre><code class="elixir">
+iex&gt; i(1)
 1
 
 iex&gt; i(&quot;identity combinator&quot;)
-&quot;identity combinator&quot;</code></pre>
+&quot;identity combinator&quot;
+</code></pre>
 
   </section>
 </div>
@@ -214,7 +216,7 @@ iex&gt; i(&quot;identity combinator&quot;)
     </a>
     <span class="signature">i(x)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L21" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L25" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -240,7 +242,7 @@ iex&gt; i(&quot;identity combinator&quot;)
     </a>
     <span class="signature">k()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L39" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L47" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -250,14 +252,16 @@ iex&gt; i(&quot;identity combinator&quot;)
     <p>The constant (“Konstant”) combinator. Returns the first argument, unchanged, and
 discards the second argument. Can be used to repeatedly apply the same value
 in functions such as folds.</p>
-<pre><code class="iex elixir">iex&gt; k(1, 2)
+<pre><code class="elixir">
+iex&gt; k(1, 2)
 1
 
 iex&gt; k(&quot;happy&quot;, &quot;sad&quot;)
 &quot;happy&quot;
 
 iex&gt; Enum.reduce([1,2,3], [42], &amp;k/2)
-3</code></pre>
+3
+</code></pre>
 
   </section>
 </div>
@@ -268,7 +272,7 @@ iex&gt; Enum.reduce([1,2,3], [42], &amp;k/2)
     </a>
     <span class="signature">k(x)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L39" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L47" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -285,7 +289,7 @@ iex&gt; Enum.reduce([1,2,3], [42], &amp;k/2)
     </a>
     <span class="signature">k(x, y)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L39" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L47" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -311,7 +315,7 @@ iex&gt; Enum.reduce([1,2,3], [42], &amp;k/2)
     </a>
     <span class="signature">s()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L64" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -320,10 +324,12 @@ iex&gt; Enum.reduce([1,2,3], [42], &amp;k/2)
   <section class="docstring">
     <p>The “substitution” combinator. Applies the last argument to the first two, and then
 the first two to each other.</p>
-<pre><code class="iex elixir">iex&gt; add = &amp;(&amp;1 + &amp;2)
+<pre><code class="elixir">
+iex&gt; add = &amp;(&amp;1 + &amp;2)
 iex&gt; double = &amp;(&amp;1 * 2)
 iex&gt; s(add, double, 8)
-24</code></pre>
+24
+</code></pre>
 
   </section>
 </div>
@@ -334,7 +340,7 @@ iex&gt; s(add, double, 8)
     </a>
     <span class="signature">s(x)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L64" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -351,7 +357,7 @@ iex&gt; s(add, double, 8)
     </a>
     <span class="signature">s(x, y)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L64" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -368,7 +374,7 @@ iex&gt; s(add, double, 8)
     </a>
     <span class="signature">s(x, y, z)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/ski.ex#L64" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

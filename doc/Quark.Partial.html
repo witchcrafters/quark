@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.Partial – Quark v1.0.0</title>
+    <title>Quark.Partial – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.Partial
         
         
@@ -151,7 +151,7 @@ arity. For instance, <code class="inline">defpartial add(a,b), do: a + b</code> 
     </a>
     <span class="signature">defpartial(arg, list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L44" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L48" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -162,7 +162,8 @@ arity. For instance, <code class="inline">defpartial add(a,b), do: a + b</code> 
 of a fully-curried function, for all arities <em>at and below</em> the user-specified
 arity. For instance, <code class="inline">defpartial add(a,b), do: a + b</code> will generate <code class="inline">add/0</code>,
 <code class="inline">add/1</code> and <code class="inline">add/2</code>.</p>
-<pre><code class="elixir">defpartialp minus(a, b, c), do: a - b - c
+<pre><code class="elixir">
+defpartialp minus(a, b, c), do: a - b - c
 
 minus(3, 2, 1)
 # =&gt; 0
@@ -176,7 +177,8 @@ below_ten.(2, 1)
 
 below_five = minus(20, 15)
 below_five.(2)
-# =&gt; 3</code></pre>
+# =&gt; 3
+</code></pre>
 
   </section>
 </div>
@@ -187,7 +189,7 @@ below_five.(2)
     </a>
     <span class="signature">defpartialp(arg, list)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L78" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/partial.ex#L86" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -195,7 +197,8 @@ below_five.(2)
   
   <section class="docstring">
     <p><code class="inline">defpartial</code>, but generates private functions</p>
-<pre><code class="elixir">defpartialp minus(a, b, c), do: a - b - c
+<pre><code class="elixir">
+defpartialp minus(a, b, c), do: a - b - c
 
 minus(3, 2, 1)
 # =&gt; 0
@@ -209,7 +212,8 @@ below10.(2, 1)
 
 below5 = minus(10, 5)
 below5.(2)
-# =&gt; 3</code></pre>
+# =&gt; 3
+</code></pre>
 
   </section>
 </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.3">
-    <title>Quark.BCKW – Quark v1.0.0</title>
+    <title>Quark.BCKW – Quark v1.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         Quark
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v1.0.1
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
 
 
       <h1>
-        <small class="visible-xs">Quark v1.0.0</small>
+        <small class="visible-xs">Quark v1.0.1</small>
         Quark.BCKW
         
         
@@ -181,7 +181,7 @@ A similar idea to <code class="inline">SKI</code>, but with different primitives
     </a>
     <span class="signature">b()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L19" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L23" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -189,9 +189,11 @@ A similar idea to <code class="inline">SKI</code>, but with different primitives
   
   <section class="docstring">
     <p>Normal (binary) function composition</p>
-<pre><code class="iex elixir">iex&gt; sum_plus_one = b(&amp;(&amp;1 + 1), &amp;Enum.sum/1)
+<pre><code class="elixir">
+iex&gt; sum_plus_one = b(&amp;(&amp;1 + 1), &amp;Enum.sum/1)
 iex&gt; [1,2,3] |&gt; sum_plus_one.()
-7</code></pre>
+7
+</code></pre>
 
   </section>
 </div>
@@ -202,7 +204,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">b(x)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L19" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L23" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -219,7 +221,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">b(x, y)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L19" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L23" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -236,7 +238,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">b(x, y, z)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L19" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L23" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -262,7 +264,7 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
     </a>
     <span class="signature">c()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L41" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -270,12 +272,14 @@ iex&gt; [1,2,3] |&gt; sum_plus_one.()
   
   <section class="docstring">
     <p>Reverse (first) two arguments (<code class="inline">flip</code>)</p>
-<pre><code class="iex elixir">iex&gt; c(&amp;div/2).(1, 2)
+<pre><code class="elixir">
+iex&gt; c(&amp;div/2).(1, 2)
 2
 
 iex&gt; reverse_concat = c(&amp;Enum.concat/2)
 iex&gt; reverse_concat.([1,2,3], [4,5,6])
-[4,5,6,1,2,3]</code></pre>
+[4,5,6,1,2,3]
+</code></pre>
 
   </section>
 </div>
@@ -286,7 +290,7 @@ iex&gt; reverse_concat.([1,2,3], [4,5,6])
     </a>
     <span class="signature">c(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L41" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -312,7 +316,7 @@ iex&gt; reverse_concat.([1,2,3], [4,5,6])
     </a>
     <span class="signature">w()</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L47" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L59" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -320,12 +324,14 @@ iex&gt; reverse_concat.([1,2,3], [4,5,6])
   
   <section class="docstring">
     <p>Apply the same argument to a functon twice</p>
-<pre><code class="iex elixir">iex&gt; repeat = w(&amp;Enum.concat/2)
+<pre><code class="elixir">
+iex&gt; repeat = w(&amp;Enum.concat/2)
 iex&gt; repeat.([1,2])
 [1,2,1,2]
 
 iex&gt; w(&amp;Enum.zip/2).([1,2,3])
-[{1, 1}, {2, 2}, {3, 3}]</code></pre>
+[{1, 1}, {2, 2}, {3, 3}]
+</code></pre>
 
   </section>
 </div>
@@ -336,7 +342,7 @@ iex&gt; w(&amp;Enum.zip/2).([1,2,3])
     </a>
     <span class="signature">w(fun)</span>
       
-      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L47" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/robot-overlord/quark/blob/master/lib/quark/bckw.ex#L59" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
