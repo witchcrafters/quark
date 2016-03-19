@@ -1,7 +1,7 @@
 defmodule Quark do
   @moduledoc ~S"""
   For convenience, many of the most common combinators are available here and given
-  firendlier names.
+  friendlier names.
 
   Due to performance reasons, many of the combinators are given non-combinatory
   implementations (ie: not everything is expressed in terms `s` and `k`)
