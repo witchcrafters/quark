@@ -4,7 +4,7 @@
 
 | Maintainer Message |Build Status |  Doc Coverage  | Documentation |  Hosted Package |
 |--------------|--------------------|---------------|---------------|-----------------|
-| ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) | [![Circle CI](https://circleci.com/gh/robot-overlord/quark/tree/master.svg?style=svg)](https://circleci.com/gh/robot-overlord/quark/tree/master) | [![Inline docs](http://inch-ci.org/github/robot-overlord/quark.svg?branch=master)](http://inch-ci.org/github/robot-overlord/quark) | [robotoverlord.io/quark](http://www.robotoverlord.io/quark/api-reference.html) | [Hex](https://hex.pm/packages/quark) |
+| ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) | [![Circle CI](https://circleci.com/gh/robot-overlord/quark/tree/master.svg?style=svg)](https://circleci.com/gh/robot-overlord/quark/tree/master) | [![Inline docs](http://inch-ci.org/github/robot-overlord/quark.svg?branch=master)](http://inch-ci.org/github/robot-overlord/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
 
 
 # Table of Contents
