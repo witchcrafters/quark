@@ -2,9 +2,8 @@
 
 ![](https://github.com/expede/quark/blob/master/brand/logo.png?raw=true)
 
-| Build Status |  Doc Coverage  | Documentation |  Hosted Package |
-|--------------|----------------|---------------|-----------------|
-| [![Build Status](https://travis-ci.org/expede/quark.svg?branch=master)](https://travis-ci.org/expede/quark)| [![Inline docs](http://inch-ci.org/github/expede/quark.svg?branch=master)](http://inch-ci.org/github/expede/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
+[![Build Status](https://travis-ci.org/expede/quark.svg?branch=master)](https://travis-ci.org/expede/quark) [![Inline docs](http://inch-ci.org/github/expede/quark.svg?branch=master)](http://inch-ci.org/github/expede/quark) [![hex.pm version](https://img.shields.io/hexpm/v/quark.svg?style=flat)](https://hex.pm/packages/quark) [![API Docs](https://img.shields.io/badge/api-docs-yellow.svg?style=flat)](http://hexdocs.pm/quark/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/expede/quark/blob/master/LICENSE)
+
 
 
 # Table of Contents
