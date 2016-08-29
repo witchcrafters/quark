@@ -216,6 +216,6 @@ This works with any ordered collection via the `Quark.Sequence` protocol.
 succ 10
 #=> 11
 
-#=> 42 |> origin |> pred |> pred
--2
+42 |> origin |> pred |> pred
+#=> -2
 ```
