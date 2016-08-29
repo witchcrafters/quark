@@ -22,7 +22,7 @@ defmodule Quark.Mixfile do
       aliases: ["quality": ["test", "credo --strict"]],
 
       deps: [
-        {:credo,    "~> 0.4",  only: :test},
+        {:credo,    "~> 0.4",  only: [:dev, :test]},
 
         {:dialyxir, "~> 0.3",  only: :dev},
         {:earmark,  "~> 1.0",  only: :dev},
