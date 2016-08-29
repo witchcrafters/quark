@@ -4,7 +4,7 @@
 
 | Build Status |  Doc Coverage  | Documentation |  Hosted Package |
 |--------------|----------------|---------------|-----------------|
-| [![Circle CI](https://circleci.com/gh/expede/quark/tree/master.svg?style=svg)](https://circleci.com/gh/expede/quark/tree/master) | [![Inline docs](http://inch-ci.org/github/expede/quark.svg?branch=master)](http://inch-ci.org/github/expede/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
+| [![Build Status](https://travis-ci.org/expede/quark.svg?branch=master)](https://travis-ci.org/expede/quark)| [![Inline docs](http://inch-ci.org/github/expede/quark.svg?branch=master)](http://inch-ci.org/github/expede/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
 
 
 # Table of Contents
