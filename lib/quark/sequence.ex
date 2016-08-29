@@ -1,18 +1,17 @@
 defprotocol Quark.Sequence do
   @moduledoc ~S"""
+  A protocol for stepping through ordered enumerables
   """
 
   @doc ~S"""
   The beginning of the sequence.
 
-  For instance, integers are generally thought of as centering around 0
+  For instance, integers are generally thought of as centering around 0.
 
-  ```elixir
+  ## Examples
 
-  iex> origin(9)
-  0
-
-  ```
+      iex> origin(9)
+      0
 
   """
   @spec origin(any) :: any
@@ -23,15 +22,13 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number above.
 
-  ```elixir
+  ## Examples
 
-  iex> succ(1)
-  2
+      iex> succ(1)
+      2
 
-  iex> 10 |> origin |> succ |> succ
-  2
-
-  ```
+      iex> 10 |> origin |> succ |> succ
+      2
 
   """
   @spec succ(any) :: any
@@ -42,15 +39,13 @@ defprotocol Quark.Sequence do
 
   For integers, this is the number below.
 
-  ```elixir
+  ## Examples
 
-  iex> pred(10)
-  9
+      iex> pred(10)
+      9
 
-  iex> 42 |> origin |> pred |> pred
-  -2
-
-  ```
+      iex> 42 |> origin |> pred |> pred
+      -2
 
   """
   @spec pred(any) :: any

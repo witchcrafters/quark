@@ -1,10 +1,10 @@
-![](https://github.com/robot-overlord/quark/blob/master/logo.png?raw=true)
+![](https://github.com/expede/quark/blob/master/brand/logo.png?raw=true)
 
 ## Common combinators for Elixir
 
 | Maintainer Message |Build Status |  Doc Coverage  | Documentation |  Hosted Package |
 |--------------|--------------------|---------------|---------------|-----------------|
-| ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) | [![Circle CI](https://circleci.com/gh/robot-overlord/quark/tree/master.svg?style=svg)](https://circleci.com/gh/robot-overlord/quark/tree/master) | [![Inline docs](http://inch-ci.org/github/robot-overlord/quark.svg?branch=master)](http://inch-ci.org/github/robot-overlord/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
+| ![built with humanity](https://cloud.githubusercontent.com/assets/1052016/11023213/66d837a4-8627-11e5-9e3b-b295fafb1450.png) | [![Circle CI](https://circleci.com/gh/expede/quark/tree/master.svg?style=svg)](https://circleci.com/gh/expede/quark/tree/master) | [![Inline docs](http://inch-ci.org/github/expede/quark.svg?branch=master)](http://inch-ci.org/github/expede/quark) | [hexdocs.pm/quark](https://hexdocs.pm/quark) | [Hex](https://hex.pm/packages/quark) |
 
 
 # Table of Contents
@@ -30,9 +30,14 @@
 ```elixir
 
 def deps do
-  [{:quark, "~> 1.0"}]
+  [{:quark, "~> 2.0"}]
 end
 
+defmodule MyModule do
+  use Quark
+
+  # ...
+end
 ```
 
 # Summary
@@ -58,7 +63,6 @@ deeper functional composition on functions for reuse.
   - `succ`
   - `fix`
   - `self_apply`
-
 
 # Functional Overview
 
@@ -155,17 +159,64 @@ algorithm, but not usually with much efficiency.
 We've aliased the names at the top-level (`Quark`), so you can use `const`
 rather than having to remember what `k` means.
 
+```elixir
+ 1 |> i
+#=> 1
+
+"identity combinator" |> i
+#=> "identity combinator"
+
+Enum.reduce([1,2,3], [42], &k/2)
+#=> 3
+
+```
+
 ### BCKW System
 The classic `b`, `c`, `k`, and `w` combinators. A similar "full system" as SKI,
 but with some some different functionality out of the box.
 
 As usual, we've aliased the names at the top-level (`Quark`).
 
+```elixir
+c(&div/2).(1, 2)
+#=> 2
+
+reverse_concat = c(&Enum.concat/2)
+reverse_concat.([1,2,3], [4,5,6])
+#=> [4,5,6,1,2,3]
+
+repeat = w(&Enum.concat/2)
+repeat.([1,2])
+#=> [1,2,1,2]
+```
+
 ### Fixed Point
 Several fixed point combinators, for helping with recursion. Several formulations are provided,
 but if in doubt, use `fix`. Fix is going to be kept as an alias to the most efficient
 formulation at any given time, and thus reasonably future-proof.
 
+```elixir
+fac = fn fac ->
+  fn
+    0 -> 0
+    1 -> 1
+    n -> n * fac.(n - 1)
+  end
+end
+
+factorial = y(fac)
+factorial.(9)
+#=> 362880
+```
+
 ### Sequence
 Really here for `pred` and `succ` on integers, by why stop there?
 This works with any ordered collection via the `Quark.Sequence` protocol.
+
+```elixir
+succ 10
+#=> 11
+
+#=> 42 |> origin |> pred |> pred
+-2
+```

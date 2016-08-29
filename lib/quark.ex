@@ -1,71 +1,25 @@
 defmodule Quark do
   @moduledoc ~S"""
-  For convenience, many of the most common combinators are available here and given
-  friendlier names.
+  Top-level module. Provides a convenient `use` macro for importing the most
+  commonly used functions and macros.
 
   Due to performance reasons, many of the combinators are given non-combinatory
   implementations (ie: not everything is expressed in terms `s` and `k`)
   """
 
-  use Quark.Partial
+  defmacro __using__(_) do
+    quote do
+      import unquote(__MODULE__), only: []
 
-  defdelegate compose(list), to: Quark.Compose
-  defdelegate compose(a, b), to: Quark.Compose
-  defdelegate a <|> b, to: Quark.Compose
+      import Quark.Compose, only: [compose: 1, compose: 2, <|>: 2]
+      import Quark.FixedPoint, only: [fix: 1]
+      import Quark.Sequence
+      import Quark.BCKW, only: [flip: 1, id: 1]
+      import Quark.SKI, only: [constant: 2, first: 2]
+      import Quark.M
 
-  defdelegate fix(f), to: Quark.FixedPoint
-
-  defdelegate origin(x), to: Quark.Sequence
-  defdelegate succ(x), to: Quark.Sequence
-  defdelegate pred(x), to: Quark.Sequence
-
-  defdelegate flip(fun), to: Quark.BCKW, as: :c
-  defdelegate id(x), to: Quark.SKI, as: :i
-
-  defdelegate constant(a, b), to: Quark.SKI, as: :k
-  defdelegate first(a, b), to: Quark.SKI, as: :k
-
-  @doc ~S"""
-  Opposite of `first` (the `k` combinator).
-
-  Returns the *second* of two arguments. Can be used to repeatedly apply the same value
-  in functions such as folds.
-
-  ```elixir
-
-  iex> Quark.second(43, 42)
-  42
-
-  iex> Enum.reduce([1,2,3], [], &Quark.second/2)
-  []
-
-  ```
-
-  """
-  @spec second(any, any) :: any
-  defpartial second(a, b), do: b
-
-  @doc ~S"""
-  Apply a function to itself
-
-  ```elixir
-
-  iex> import Quark, only: [m: 1]
-  iex> add_one = fn x -> x + 1 end
-  iex> add_two = m(add_one)
-  iex> add_two.(8)
-  10
-
-  ```
-
-  """
-  @spec m((... -> any)) :: (... -> any)
-  defpartial m(fun) do
-    import Quark.Curry, only: [curry: 1]
-    c_fun = curry(fun)
-    &c_fun.(c_fun.(&1))
+      use Quark.Curry
+      use Quark.Partial
+    end
   end
-
-  defdelegate self_apply(), to: __MODULE__, as: :m
-  defdelegate self_apply(fun), to: __MODULE__, as: :m
 end
