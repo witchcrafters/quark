@@ -29,4 +29,8 @@ defmodule Quark do
   defdelegate second(a, b), to: Quark.SKI
 
   defdelegate self_apply(a), to: Quark.M
+
+  defdelegate origin(a), to: Quark.Sequence
+  defdelegate succ(a),   to: Quark.Sequence
+  defdelegate pred(a),   to: Quark.Sequence
 end
