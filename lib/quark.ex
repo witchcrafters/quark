@@ -14,8 +14,8 @@ defmodule Quark do
       import Quark.Compose, only: [compose: 1, compose: 2, <|>: 2]
       import Quark.FixedPoint, only: [fix: 1]
       import Quark.Sequence
-      import Quark.BCKW, only: [flip: 1, id: 1]
-      import Quark.SKI, only: [constant: 2, first: 2]
+      import Quark.BCKW, only: [flip: 1]
+      import Quark.SKI, only: [constant: 2, id: 1, first: 2]
       import Quark.M
 
       use Quark.Curry

@@ -41,6 +41,10 @@ defmodule Quark.BCKW do
 
   defdelegate flip(fun), to: __MODULE__, as: :c
 
+  defdelegate k(),     to: Quark.SKI
+  defdelegate k(a),    to: Quark.SKI
+  defdelegate k(a, b), to: Quark.SKI
+
   @doc ~S"""
   Apply the same argument to a functon twice
 

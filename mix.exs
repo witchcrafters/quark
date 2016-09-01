@@ -7,7 +7,7 @@ defmodule Quark.Mixfile do
       name: "Quark",
 
       description: "Common combinators for Elixir",
-      version: "2.0.0",
+      version: "2.0.1",
       elixir:  "~> 1.3",
 
       package: [
