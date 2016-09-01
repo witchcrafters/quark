@@ -7,7 +7,7 @@ defmodule Quark.Mixfile do
       name: "Quark",
 
       description: "Common combinators for Elixir",
-      version: "2.0.1",
+      version: "2.1.0",
       elixir:  "~> 1.3",
 
       package: [
@@ -32,8 +32,9 @@ defmodule Quark.Mixfile do
       ],
 
       docs: [
+        extras: ["README.md"],
         logo: "./brand/logo.png",
-        extras: ["README.md"]
+        main: "readme"
       ]
     ]
   end
