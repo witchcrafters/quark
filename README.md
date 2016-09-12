@@ -158,6 +158,35 @@ operator `<|>` is done "the math way" (right-to-left).
 
 Versions on lists also available.
 
+```elixir
+# Regular Composition
+
+sum_plus_one = fn x -> x + 1 end <|> &Enum.sum/1
+sum_plus_one.([1,2,3])
+#=> 7
+
+add_one = &(&1 + 1)
+piped = [1,2,3] |> Enum.sum |> add_one.()
+composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
+piped == composed
+#=> true
+
+sum_plus_one = (&Enum.sum/1) <~> fn x -> x + 1 end
+sum_plus_one.([1,2,3])
+#=> 7
+
+# Reverse Composition (same direction as pipe)
+x200 = (&(&1 * 2)) <~> (&(&1 * 10)) <~> (&(&1 * 10))
+x200.(5)
+#=> 1000
+
+add_one = &(&1 + 1)
+piped = [1,2,3] |> Enum.sum |> add_one.()
+composed = [1,2,3] |> ((&Enum.sum/1) <~> add_one).()
+piped == composed
+#=> true
+```
+
 ## Common Combinators
 A number of basic, general functions, including `id`, `flip`, `const`, `pred`, `succ`, `fix`, and `self_apply`.
 
