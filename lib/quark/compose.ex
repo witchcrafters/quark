@@ -16,8 +16,10 @@ defmodule Quark.Compose do
   provides the opposite in the form of `*_forward` functions.
   """
 
+  import Quark.SKI
+
   use Quark.Partial
-  alias Quark.SKI
+  use Quark.Curry
 
   @doc ~S"""
   Function composition
@@ -30,7 +32,13 @@ defmodule Quark.Compose do
 
   """
   @spec compose(fun, fun) :: any
-  defdelegate compose(g, f), to: Quark.BCKW, as: :b
+  def compose(g, f) do
+    fn x ->
+      x
+      |> curry(f).()
+      |> curry(g).()
+    end
+  end
 
   @doc ~S"""
   Function composition, from the tail of the list to the head
@@ -43,8 +51,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose([fun]) :: fun
-  def compose(func_list), do: List.foldr(func_list, &SKI.id/1, &compose(&1,&2))
-  def compose(), do: &compose/1
+  defpartial compose(func_list), do: func_list |> List.foldr(&id/1, &compose/2)
 
   @doc ~S"""
   Infix compositon operator
@@ -76,8 +83,36 @@ defmodule Quark.Compose do
 
   """
   @spec compose_forward(fun, fun) :: fun
-  defpartial compose_forward(f,g), do: &(g.(f.(&1)))
+  defpartial compose_forward(f,g) do
+    fn x ->
+      x
+      |> curry(f).()
+      |> curry(g).()
+    end
+  end
 
+  @doc ~S"""
+  Infix "forward" compositon operator
+
+  ## Examples
+
+      iex> sum_plus_one = (&Enum.sum/1) <~> fn x -> x + 1 end
+      iex> sum_plus_one.([1,2,3])
+      7
+
+      iex> x200 = (&(&1 * 2)) <~> (&(&1 * 10)) <~> (&(&1 * 10))
+      iex> x200.(5)
+      1000
+
+      iex> add_one = &(&1 + 1)
+      iex> piped = [1,2,3] |> Enum.sum |> add_one.()
+      iex> composed = [1,2,3] |> ((&Enum.sum/1) <~> add_one).()
+      iex> piped == composed
+      true
+
+  """
+  @spec fun <~> fun :: fun
+  def f <~> g, do: compose_forward(f, g)
 
   @doc ~S"""
   Compose functions, from the head of the list of functions. The is the reverse
@@ -93,6 +128,6 @@ defmodule Quark.Compose do
   """
   @spec compose_list_forward([fun]) :: fun
   defpartial compose_list_forward(func_list) do
-    func_list |> Enum.reduce(&SKI.id/1, &compose/2)
+    func_list |> Enum.reduce(&id/1, &compose/2)
   end
 end

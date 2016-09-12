@@ -27,7 +27,7 @@
 ```elixir
 
 def deps do
-  [{:quark, "~> 2.1"}]
+  [{:quark, "~> 2.2"}]
 end
 
 defmodule MyModule do
@@ -135,6 +135,20 @@ minus(100).(10).(50)
 minus.(10).(2).(1)
 # => 7
 
+```
+
+## Pointfree
+Allows defining functions as straight function composition (ie: no need to state the argument).
+Provides a clean, composable named functions. Also doubles as an aliasing device.
+
+```elixir
+defmodule Foo do
+  use Quark.Pointfree
+  defx foo, do: Enum.sum |> fn x -> x + 1 end.()
+end
+
+Foo.foo([1,2,3])
+#=> 7
 ```
 
 ## Compose

@@ -1,7 +1,5 @@
 defprotocol Quark.Sequence do
-  @moduledoc ~S"""
-  A protocol for stepping through ordered enumerables
-  """
+  @moduledoc "A protocol for stepping through ordered enumerables"
 
   @doc ~S"""
   The beginning of the sequence.
@@ -10,8 +8,8 @@ defprotocol Quark.Sequence do
 
   ## Examples
 
-      iex> origin(9)
-      0
+      origin(9)
+      #=> 0
 
   """
   @spec origin(any) :: any
@@ -25,10 +23,10 @@ defprotocol Quark.Sequence do
   ## Examples
 
       iex> succ(1)
-      2
+      #=> 2
 
       iex> 10 |> origin |> succ |> succ
-      2
+      #=> 2
 
   """
   @spec succ(any) :: any
@@ -41,11 +39,11 @@ defprotocol Quark.Sequence do
 
   ## Examples
 
-      iex> pred(10)
-      9
+      pred(10)
+      #=> 9
 
-      iex> 42 |> origin |> pred |> pred
-      -2
+      42 |> origin |> pred |> pred
+      #=> -2
 
   """
   @spec pred(any) :: any
@@ -53,7 +51,35 @@ defprotocol Quark.Sequence do
 end
 
 defimpl Quark.Sequence, for: Integer do
+  @doc ~S"""
+  ## Examples
+
+      iex> origin(9)
+      0
+
+  """
   def origin(num), do: 0
+
+  @doc ~S"""
+  ## Examples
+      iex> succ(1)
+      2
+
+      iex> 10 |> origin |> succ |> succ
+      2
+
+  """
   def succ(num), do: num + 1
+
+  @doc ~S"""
+  ## Examples
+
+      iex> pred(10)
+      9
+
+      iex> 42 |> origin |> pred |> pred
+      -2
+
+  """
   def pred(num), do: num - 1
 end

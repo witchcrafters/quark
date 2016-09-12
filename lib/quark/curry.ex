@@ -37,8 +37,7 @@ defmodule Quark.Curry do
   @spec curry(fun, integer, [any]) :: fun
   defp curry(fun, 0, arguments), do: apply(fun, Enum.reverse(arguments))
   defp curry(fun, arity, arguments) do
-    import Quark.Sequence, only: [pred: 1]
-    fn arg -> curry(fun, pred(arity), [arg | arguments]) end
+    fn arg -> curry(fun, arity - 1, [arg | arguments]) end
   end
 
   @doc ~S"""

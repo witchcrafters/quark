@@ -12,6 +12,7 @@ defmodule Quark do
       import unquote(__MODULE__)
       use Quark.Curry
       use Quark.Partial
+      use Quark.Pointfree
     end
   end
 
