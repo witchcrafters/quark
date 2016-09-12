@@ -143,12 +143,12 @@ Allows defining functions as straight function composition (ie: no need to state
 Provides a clean, composable named functions. Also doubles as an aliasing device.
 
 ```elixir
-defmodule Foo do
+defmodule Contrived do
   use Quark.Pointfree
-  defx foo, do: Enum.sum |> fn x -> x + 1 end.()
+  defx sum_plus_one, do: Enum.sum |> fn x -> x + 1 end.()
 end
 
-Foo.foo([1,2,3])
+Contrived.sum_plus_one([1,2,3])
 #=> 7
 ```
 
@@ -167,9 +167,9 @@ sum_plus_one.([1,2,3])
 #=> 7
 
 add_one = &(&1 + 1)
-piped = [1,2,3] |> Enum.sum |> add_one.()
-composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
-piped == composed
+piped = fn x -> x |> Enum.sum |> add_one.() end
+composed = add_one <|> &Enum.sum/1
+piped.([1,2,3]) == composed.([1,2,3])
 #=> true
 
 sum_plus_one = (&Enum.sum/1) <~> fn x -> x + 1 end
@@ -182,9 +182,9 @@ x200.(5)
 #=> 1000
 
 add_one = &(&1 + 1)
-piped = [1,2,3] |> Enum.sum |> add_one.()
-composed = [1,2,3] |> ((&Enum.sum/1) <~> add_one).()
-piped == composed
+piped = fn x -> x |> Enum.sum |> add_one.() end
+composed = (&Enum.sum/1) <~> add_one
+piped.([1,2,3]) == composed.([1,2,3])
 #=> true
 ```
 
