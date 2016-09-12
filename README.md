@@ -14,6 +14,7 @@
     - [Macros](#macros-defcurry-and-defcurryp)
   - [Partial](#partial)
     - [Macros](##macros-defpartial-and-defpartialp)
+  - [Pointfree](#pointfree)
   - [Compose](#compose)
   - [Common Combinators](#common-combinators)
     - [Classics](#classics)
