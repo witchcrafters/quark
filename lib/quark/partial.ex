@@ -36,7 +36,7 @@ defmodule Quark.Partial do
 
   ## Examples
 
-      defpartialp minus(a, b, c), do: a - b - c
+      defpartial minus(a, b, c), do: a - b - c
       minus(3, 2, 1)
       0
 
@@ -57,7 +57,6 @@ defmodule Quark.Partial do
       defcurry unquote({fun_name, ctx, args}), do: unquote(body)
       unquote do: Enum.map(args_scan(args), &rehydrate(fun_name, ctx, &1))
     end
-
   end
 
   defp rehydrate(fun_name, ctx, args) do
