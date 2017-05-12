@@ -44,7 +44,7 @@ end
 but it lacks some of the common built-in constructs that many other functional
 languages provide. This is not all-together surprising, as Elixir has a strong
 focus on handling the complexities of concurrency and fault-tolerance, rather than
-deeper functional composition on functions for reuse.
+deeper functional composition of functions for reuse.
 
 ## Includes
 
@@ -102,7 +102,7 @@ div_ten.(2)
 :crown: We think that this is really the crowning jewel of `Quark`.
 `defpartial` and `defpartialp` create all arities possible for the defined
 function, bare, partially applied, and fully curried.
-This does use up all the full arity-space for that function name, however.
+This does use up the full arity-space for that function name, however.
 
 ### Macros: `defpartial` and `defpartialp`
 

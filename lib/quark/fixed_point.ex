@@ -12,11 +12,11 @@ defmodule Quark.FixedPoint do
       ...>     n -> n * fac.(n - 1)
       ...>   end
       ...> end
-      ...> factorial = y fac
+      ...> factorial = y(fac)
       ...> factorial.(9)
       362880
 
-  The resulting functions will always be curried
+  The resulting function will always be curried
 
       iex> import Quark.SKI, only: [s: 3]
       ...> one_run = y(&s/3)

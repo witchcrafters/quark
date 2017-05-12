@@ -73,7 +73,7 @@ defmodule Quark.Compose do
   def g <|> f, do: compose(g, f)
 
   @doc ~S"""
-  Function composition, from the back of the lift to the front
+  Function composition, from the back of the list to the front
 
   ## Examples
 
