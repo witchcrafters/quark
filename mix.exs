@@ -7,7 +7,7 @@ defmodule Quark.Mixfile do
       name: "Quark",
 
       description: "Common combinators for Elixir",
-      version: "2.2.1",
+      version: "2.3.0",
       elixir:  "~> 1.4",
 
       package: [
@@ -19,7 +19,13 @@ defmodule Quark.Mixfile do
       source_url:   "https://github.com/expede/quark",
       homepage_url: "https://github.com/expede/quark",
 
-      aliases: ["quality": ["test", "credo --strict"]],
+      aliases: [
+        "quality": [
+          "test",
+          "credo --strict",
+          "dialyzer"
+        ]
+      ],
 
       deps: [
         {:credo,    "~> 0.8",  only: [:dev, :test]},

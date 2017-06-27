@@ -25,7 +25,7 @@ defprotocol Quark.Sequence do
       iex> succ(1)
       #=> 2
 
-      iex> 10 |> origin |> succ |> succ
+      iex> 10 |> origin() |> succ() |> succ()
       #=> 2
 
   """
@@ -42,7 +42,7 @@ defprotocol Quark.Sequence do
       pred(10)
       #=> 9
 
-      42 |> origin |> pred |> pred
+      42 |> origin() |> pred() |> pred()
       #=> -2
 
   """
@@ -65,7 +65,7 @@ defimpl Quark.Sequence, for: Integer do
       iex> succ(1)
       2
 
-      iex> 10 |> origin |> succ |> succ
+      iex> 10 |> origin() |> succ() |> succ()
       2
 
   """
@@ -77,7 +77,7 @@ defimpl Quark.Sequence, for: Integer do
       iex> pred(10)
       9
 
-      iex> 42 |> origin |> pred |> pred
+      iex> 42 |> origin() |> pred() |> pred()
       -2
 
   """
