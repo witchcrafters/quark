@@ -27,7 +27,7 @@ defmodule Quark.Compose do
   ## Examples
 
       iex> sum_plus_one = compose(&(&1 + 1), &Enum.sum/1)
-      iex> [1,2,3] |> sum_plus_one.()
+      ...> [1, 2, 3] |> sum_plus_one.()
       7
 
   """
@@ -59,13 +59,13 @@ defmodule Quark.Compose do
   ## Examples
 
       iex> sum_plus_one = fn x -> x + 1 end <|> &Enum.sum/1
-      iex> sum_plus_one.([1,2,3])
+      ...> sum_plus_one.([1,2,3])
       7
 
-      iex> add_one = &(&1 + 1)
-      iex> piped = [1,2,3] |> Enum.sum |> add_one.()
-      iex> composed = [1,2,3] |> ((add_one <|> &Enum.sum/1)).()
-      iex> piped == composed
+      iex> add_one  = &(&1 + 1)
+      ...> piped    = [1, 2, 3] |> Enum.sum() |> add_one.()
+      ...> composed = [1, 2, 3] |> ((add_one <|> &Enum.sum/1)).()
+      ...> piped == composed
       true
 
   """
@@ -77,13 +77,13 @@ defmodule Quark.Compose do
 
   ## Examples
 
-      iex> sum_plus_one = compose_forward(&(Enum.sum(&1)), &(&1 + 1))
-      iex> [1,2,3] |> sum_plus_one.()
+      iex> sum_plus_one = compose_forward(&Enum.sum/1, &(&1 + 1))
+      ...> [1, 2, 3] |> sum_plus_one.()
       7
 
   """
   @spec compose_forward(fun, fun) :: fun
-  defpartial compose_forward(f,g) do
+  defpartial compose_forward(f, g) do
     fn x ->
       x
       |> curry(f).()
@@ -97,17 +97,17 @@ defmodule Quark.Compose do
   ## Examples
 
       iex> sum_plus_one = (&Enum.sum/1) <~> fn x -> x + 1 end
-      iex> sum_plus_one.([1,2,3])
+      ...> sum_plus_one.([1, 2, 3])
       7
 
       iex> x200 = (&(&1 * 2)) <~> (&(&1 * 10)) <~> (&(&1 * 10))
-      iex> x200.(5)
+      ...> x200.(5)
       1000
 
-      iex> add_one = &(&1 + 1)
-      iex> piped = [1,2,3] |> Enum.sum |> add_one.()
-      iex> composed = [1,2,3] |> ((&Enum.sum/1) <~> add_one).()
-      iex> piped == composed
+      iex> add_one  = &(&1 + 1)
+      ...> piped    = [1, 2, 3] |> Enum.sum() |> add_one.()
+      ...> composed = [1, 2, 3] |> ((&Enum.sum/1) <~> add_one).()
+      ...> piped == composed
       true
 
   """
@@ -122,12 +122,29 @@ defmodule Quark.Compose do
   ## Examples
 
       iex> sum_plus_one = compose_list_forward([&Enum.sum/1, &(&1 + 1)])
-      ...> [1,2,3] |> sum_plus_one.()
+      ...> sum_plus_one.([1, 2, 3])
       7
 
   """
   @spec compose_list_forward([fun]) :: fun
   defpartial compose_list_forward(func_list) do
-    func_list |> Enum.reduce(&id/1, &compose/2)
+    List.foldl(func_list, &id/1, &compose/2)
+  end
+
+  @doc ~S"""
+  Compose functions, from the head of the list of functions. The is the reverse
+  order versus what one would normally expect (left-to-right rather than
+  right-to-left).
+
+  ## Examples
+
+  iex> sum_plus_one = compose_list([&(&1 + 1), &Enum.sum/1])
+  ...> sum_plus_one.([1, 2, 3])
+  7
+
+  """
+  @spec compose_list([fun]) :: fun
+  defpartial compose_list(func_list) do
+    List.foldr(func_list, &id/1, &compose/2)
   end
 end

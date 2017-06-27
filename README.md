@@ -145,7 +145,7 @@ Provides a clean, composable named functions. Also doubles as an aliasing device
 ```elixir
 defmodule Contrived do
   use Quark.Pointfree
-  defx sum_plus_one, do: Enum.sum |> fn x -> x + 1 end.()
+  defx sum_plus_one, do: Enum.sum() |> fn x -> x + 1 end.()
 end
 
 Contrived.sum_plus_one([1,2,3])
@@ -154,8 +154,10 @@ Contrived.sum_plus_one([1,2,3])
 
 ## Compose
 Compose functions to do convenient partial applications.
-Versions for composing left-to-right and right-to-left are provided, but the
-operator `<|>` is done "the math way" (right-to-left).
+Versions for composing left-to-right and right-to-left are provided
+
+The operator `<|>` is done "the math way" (right-to-left).
+The operator `<~>` is done "the flow way" (left-to-right).
 
 Versions on lists also available.
 
@@ -182,7 +184,7 @@ x200.(5)
 #=> 1000
 
 add_one = &(&1 + 1)
-piped = fn x -> x |> Enum.sum |> add_one.() end
+piped = fn x -> x |> Enum.sum() |> add_one.() end
 composed = (&Enum.sum/1) <~> add_one
 piped.([1,2,3]) == composed.([1,2,3])
 #=> true
@@ -201,10 +203,10 @@ We've aliased the names at the top-level (`Quark`), so you can use `const`
 rather than having to remember what `k` means.
 
 ```elixir
- 1 |> i
+ 1 |> i()
 #=> 1
 
-"identity combinator" |> i
+"identity combinator" |> i()
 #=> "identity combinator"
 
 Enum.reduce([1,2,3], [42], &k/2)
@@ -258,6 +260,6 @@ This works with any ordered collection via the `Quark.Sequence` protocol.
 succ 10
 #=> 11
 
-42 |> origin |> pred |> pred
+42 |> origin() |> pred() |> pred()
 #=> -2
 ```
