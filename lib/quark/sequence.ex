@@ -58,7 +58,7 @@ defimpl Quark.Sequence, for: Integer do
       0
 
   """
-  def origin(num), do: 0
+  def origin(_num), do: 0
 
   @doc ~S"""
   ## Examples

@@ -74,7 +74,7 @@ defmodule Quark.FixedPoint do
 
   """
   @spec turing(fun) :: fun
-  defpartial turing(fun), do: turing_inner.(turing_inner).(fun)
+  defpartial turing(fun), do: turing_inner().(turing_inner()).(fun)
 
   defpartialp turing_inner(x, y) do
     cx = curry(x)
@@ -101,5 +101,5 @@ defmodule Quark.FixedPoint do
 
   """
   @spec z(fun, any) :: fun
-  defpartial z(g, v), do: g.(z.(g)).(v)
+  defpartial z(g, v), do: g.(z(g)).(v)
 end

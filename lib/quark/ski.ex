@@ -52,7 +52,7 @@ defmodule Quark.SKI do
 
   """
   @spec k(any, any) :: any
-  defpartial k(x, y), do: x
+  defpartial k(x, _y), do: x
 
   defdelegate constant(a, b), to: __MODULE__, as: :k
   defdelegate first(a, b),    to: __MODULE__, as: :k

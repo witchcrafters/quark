@@ -9,7 +9,7 @@ defmodule Quark.PartialTest do
 
   defpartial minus(a, b, c), do: a - b - c
   test "creates fully-curried functions" do
-    assert minus.(10).(2).(1) == 7
+    assert minus().(10).(2).(1) == 7
   end
 
   test "can partially apply functions" do
@@ -22,7 +22,7 @@ defmodule Quark.PartialTest do
 
   defpartialp minusp(a, b, c), do: a - b - c
   test "creates fully-curried private functions" do
-    assert minusp.(10).(2).(1) == 7
+    assert minusp().(10).(2).(1) == 7
   end
 
   test "can partially apply private functions" do

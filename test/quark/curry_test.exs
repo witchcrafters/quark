@@ -6,20 +6,20 @@ defmodule Quark.CurryTest do
   defcurryp minus(a, b), do: a - b
 
   test "applies in sequence" do
-    assert div.(10).(5) == 2
+    assert div().(10).(5) == 2
   end
 
   test "curried functions can partially apply" do
-    div10 = div.(10)
+    div10 = div().(10)
     assert div10.(2) == 5
   end
 
   test "private functions apply in sequence" do
-    assert minus.(10).(2) == 8
+    assert minus().(10).(2) == 8
   end
 
   test "private curried functions can partially apply" do
-    below10 = minus.(10)
+    below10 = minus().(10)
     assert below10.(9) == 1
   end
 end
