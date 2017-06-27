@@ -22,8 +22,7 @@ defmodule Quark.Mixfile do
       aliases: [
         "quality": [
           "test",
-          "credo --strict",
-          "dialyzer"
+          "credo --strict"
         ]
       ],
 
