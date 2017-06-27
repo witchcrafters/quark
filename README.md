@@ -28,7 +28,7 @@
 ```elixir
 
 def deps do
-  [{:quark, "~> 2.2"}]
+  [{:quark, "~> 2.3"}]
 end
 
 defmodule MyModule do
