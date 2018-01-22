@@ -162,8 +162,9 @@ The operator `<~>` is done "the flow way" (left-to-right).
 Versions on lists also available.
 
 ```elixir
-# Regular Composition
+import Quark.Compose
 
+# Regular Composition
 sum_plus_one = fn x -> x + 1 end <|> &Enum.sum/1
 sum_plus_one.([1,2,3])
 #=> 7
