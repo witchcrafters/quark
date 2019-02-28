@@ -6,13 +6,6 @@ defmodule Quark.Curry do
   partial application on any curried function.
   """
 
-  defmacro __using__(_) do
-    quote do
-      require unquote(__MODULE__)
-      import unquote(__MODULE__)
-    end
-  end
-
   @doc ~S"""
   Curry a function at runtime, rather than upon definition
 

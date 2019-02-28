@@ -15,8 +15,7 @@ defmodule Quark.Partial do
   function, fall back to `defcurry` and partially apply manually.
   """
 
-  use Quark.Curry
-  require Quark.Curry
+  import Quark.Curry
 
   defmacro __using__(_) do
     quote do

@@ -6,27 +6,20 @@ defmodule Quark.Pointfree do
   Provides a clean, composable named functions
   """
 
-  defmacro __using__(_) do
-    quote do
-      require unquote(__MODULE__)
-      import unquote(__MODULE__)
-    end
-  end
-
   @doc ~S"""
   Define a unary function with an implied subject
 
   ## Examples
 
       iex> defmodule Foo do
-      ...>   use Quark.Pointfree
+      ...>   import Quark.Pointfree
       ...>   defx foo(), do: Enum.sum |> fn x -> x + 1 end.()
       ...> end
       ...> Foo.foo([1,2,3])
       7
 
       iex> defmodule Bar do
-      ...>   use Quark.Pointfree
+      ...>   import Quark.Pointfree
       ...>   defx bar, do: Enum.sum |> fn x -> x + 1 end.()
       ...> end
       ...> Bar.bar([1,2,3])
@@ -49,7 +42,7 @@ defmodule Quark.Pointfree do
   ## Examples
 
       defmodule Foo do
-        use Quark.Pointfree
+        import Quark.Pointfree
         defxp foo(), do: Enum.sum |> fn x -> x + 1 end.()
       end
 

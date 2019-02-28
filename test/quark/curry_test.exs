@@ -1,6 +1,6 @@
 defmodule Quark.CurryTest do
   use ExUnit.Case, async: true
-  use Quark.Curry
+  import Quark.Curry
 
   defcurry div(a, b), do: a / b
   defcurryp minus(a, b), do: a - b

@@ -76,7 +76,7 @@ fully-curried 0-arity functions.
 ```elixir
 
 defmodule Foo do
-  use Quark.Curry
+  import Quark.Curry
 
   defcurry div(a, b), do: a / b
   defcurryp minus(a, b), do: a - b
@@ -144,7 +144,7 @@ Provides a clean, composable named functions. Also doubles as an aliasing device
 
 ```elixir
 defmodule Contrived do
-  use Quark.Pointfree
+  import Quark.Pointfree
   defx sum_plus_one, do: Enum.sum() |> fn x -> x + 1 end.()
 end
 
