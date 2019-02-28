@@ -1,6 +1,6 @@
 defmodule Quark.PartialTest do
   use ExUnit.Case, async: true
-  use Quark.Partial
+  import Quark.Partial
 
   defpartial one(), do: 1
   test "creates zero arity functions" do

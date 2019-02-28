@@ -18,7 +18,7 @@ defmodule Quark.Compose do
 
   import Quark.SKI
 
-  use Quark.Partial
+  import Quark.Partial
   import Quark.Curry
 
   @doc ~S"""

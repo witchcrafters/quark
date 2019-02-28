@@ -109,7 +109,7 @@ This does use up the full arity-space for that function name, however.
 ```elixir
 
 defmodule Foo do
-  use Quark.Partial
+  import Quark.Partial
 
   defpartial one(), do: 1
   defpartial minus(a, b, c), do: a - b - c

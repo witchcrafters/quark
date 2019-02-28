@@ -17,12 +17,6 @@ defmodule Quark.Partial do
 
   import Quark.Curry
 
-  defmacro __using__(_) do
-    quote do
-      import Quark.Partial, only: [defpartial: 2, defpartialp: 2]
-    end
-  end
-
   @doc ~S"""
   A convenience on `defcurry`. Generates a series of partially-bound
   applications of a fully-curried function, for all arities _at and below_

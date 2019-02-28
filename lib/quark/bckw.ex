@@ -4,7 +4,7 @@ defmodule Quark.BCKW do
   A similar idea to `SKI`, but with different primitives.
   """
 
-  use Quark.Partial
+  import Quark.Partial
   import Quark.Curry, only: [curry: 1]
 
   @doc ~S"""

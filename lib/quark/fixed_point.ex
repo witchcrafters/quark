@@ -26,7 +26,7 @@ defmodule Quark.FixedPoint do
 
   """
 
-  use Quark.Partial
+  import Quark.Partial
   import Quark.Curry, only: [curry: 1]
 
   defdelegate fix(),  to: __MODULE__, as: :y
