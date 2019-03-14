@@ -12,7 +12,7 @@ defmodule Quark.Partial do
       #=> foo/0, foo/1, foo/2, and foo/3
 
   If you need to use an arity in the range below the original
-  function, fall back to `defcurry` and partially apply manually.
+  function, fall back to [`defcurry/2`](Quark.Curry.html#defcurry/2) and partially apply manually.
   """
 
   use Quark.Curry
@@ -25,7 +25,7 @@ defmodule Quark.Partial do
   end
 
   @doc ~S"""
-  A convenience on `defcurry`. Generates a series of partially-bound
+  A convenience on [`defcurry/2`](Quark.Curry.html#defcurry/2). Generates a series of partially-bound
   applications of a fully-curried function, for all arities _at and below_
   the user-specified arity.
 
@@ -36,20 +36,23 @@ defmodule Quark.Partial do
 
   ## Examples
 
-      defpartial minus(a, b, c), do: a - b - c
-      minus(3, 2, 1)
-      0
+      defmodule A do
+        defpartial minus(a, b, c), do: a - b - c
+      end
 
-      minus.(3).(2).(1)
-      0
+      A.minus(3, 2, 1)
+      #=> 0
 
-      below_ten = minus(5)
-      below_ten.(2, 1)
-      7
+      A.minus.(3).(2).(1)
+      #=> 0
 
-      below_five = minus(20, 15)
+      below_ten = A.minus(10)
+      below_ten.(2).(1)
+      #=> 7
+
+      below_five = A.minus(20, 15)
       below_five.(2)
-      3
+      #=> 3
 
   """
   defmacro defpartial({fun_name, ctx, args}, do: body) do
@@ -68,24 +71,7 @@ defmodule Quark.Partial do
   end
 
   @doc ~S"""
-  `defpartial`, but generates private functions
-
-  ## Examples
-
-      defpartialp minus(a, b, c), do: a - b - c
-      minus(3, 2, 1)
-      0
-
-      minus.(3).(2).(1)
-      0
-      below10 = minus(5)
-      below10.(2, 1)
-      7
-
-      below5 = minus(10, 5)
-      below5.(2)
-      3
-
+  `defpartial/2`, but generates private functions.
   """
   defmacro defpartialp({fun_name, ctx, args}, do: body) do
     quote do
