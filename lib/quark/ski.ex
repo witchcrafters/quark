@@ -5,7 +5,7 @@ defmodule Quark.SKI do
   though generally not efficiently.
   """
 
-  use Quark.Partial
+  import Quark.Partial
 
   @doc ~S"""
   The identity combinator. Also aliased as `id`.

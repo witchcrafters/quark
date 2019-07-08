@@ -10,9 +10,9 @@ defmodule Quark do
   defmacro __using__(_) do
     quote do
       import unquote(__MODULE__)
-      use Quark.Curry
-      use Quark.Partial
-      use Quark.Pointfree
+      import Quark.Curry
+      import Quark.Partial
+      import Quark.Pointfree
     end
   end
 

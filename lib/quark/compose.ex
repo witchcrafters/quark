@@ -18,8 +18,8 @@ defmodule Quark.Compose do
 
   import Quark.SKI
 
-  use Quark.Partial
-  use Quark.Curry
+  import Quark.Partial
+  import Quark.Curry
 
   @doc ~S"""
   Function composition

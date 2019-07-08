@@ -15,14 +15,7 @@ defmodule Quark.Partial do
   function, fall back to [`defcurry/2`](Quark.Curry.html#defcurry/2) and partially apply manually.
   """
 
-  use Quark.Curry
-  require Quark.Curry
-
-  defmacro __using__(_) do
-    quote do
-      import Quark.Partial, only: [defpartial: 2, defpartialp: 2]
-    end
-  end
+  import Quark.Curry
 
   @doc ~S"""
   A convenience on [`defcurry/2`](Quark.Curry.html#defcurry/2). Generates a series of partially-bound

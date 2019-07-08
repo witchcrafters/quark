@@ -1,7 +1,7 @@
 defmodule Quark.M do
   @moduledoc "The self-applyication combinator"
 
-  use Quark.Partial
+  import Quark.Partial
 
   @doc ~S"""
   Apply a function to itself. Also aliased as `self_apply`.
