@@ -138,9 +138,9 @@ defmodule Quark.Compose do
 
   ## Examples
 
-  iex> sum_plus_one = compose_list([&(&1 + 1), &Enum.sum/1])
-  ...> sum_plus_one.([1, 2, 3])
-  7
+      iex> sum_plus_one = compose_list([&(&1 + 1), &Enum.sum/1])
+      ...> sum_plus_one.([1, 2, 3])
+      7
 
   """
   @spec compose_list([fun]) :: fun
