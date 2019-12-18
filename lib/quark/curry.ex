@@ -73,7 +73,7 @@ defmodule Quark.Curry do
   @spec uncurry(fun, any | [any]) :: any
   def uncurry(fun, arg_list) when is_list(arg_list) do
     arg_list
-    |> Enum.reduce(fun, &Kernel.apply/2)
+    |> Enum.reduce(fun, fn arg, fun -> fun.(arg) end)
   end
   def uncurry(fun, arg), do: fun.(arg)
 
