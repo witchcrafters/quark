@@ -56,14 +56,6 @@ defmodule Quark.Curry do
       ...> uncurry(curried_add, [1,2])
       3
 
-  """
-  @spec uncurry(fun, any | [any]) :: any
-  def uncurry(fun, arg_list) when is_list(arg_list) do
-    arg_list
-    |> Enum.reduce(fun, &Kernel.apply/2)
-  end
-
-  @doc ~S"""
   Apply an argument to a function
 
   ## Examples
@@ -78,7 +70,11 @@ defmodule Quark.Curry do
       4
 
   """
-  @spec uncurry(fun, any) :: any
+  @spec uncurry(fun, any | [any]) :: any
+  def uncurry(fun, arg_list) when is_list(arg_list) do
+    arg_list
+    |> Enum.reduce(fun, &Kernel.apply/2)
+  end
   def uncurry(fun, arg), do: fun.(arg)
 
   @doc "Define a curried function"
