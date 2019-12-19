@@ -32,7 +32,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose(fun, fun) :: any
-  def compose(g, f) do
+  defpartial compose(g, f) do
     fn x ->
       x
       |> curry(f).()
@@ -50,8 +50,8 @@ defmodule Quark.Compose do
       7
 
   """
-  @spec compose([fun]) :: fun
-  defpartial compose(func_list), do: func_list |> List.foldr(&id/1, &compose/2)
+  @spec compose_list([fun]) :: fun
+  defpartial compose_list(func_list), do: func_list |> List.foldr(&id/1, &compose/2)
 
   @doc ~S"""
   Infix compositon operator
@@ -84,11 +84,7 @@ defmodule Quark.Compose do
   """
   @spec compose_forward(fun, fun) :: fun
   defpartial compose_forward(f, g) do
-    fn x ->
-      x
-      |> curry(f).()
-      |> curry(g).()
-    end
+    compose(g, f)
   end
 
   @doc ~S"""
@@ -129,22 +125,5 @@ defmodule Quark.Compose do
   @spec compose_list_forward([fun]) :: fun
   defpartial compose_list_forward(func_list) do
     List.foldl(func_list, &id/1, &compose/2)
-  end
-
-  @doc ~S"""
-  Compose functions, from the head of the list of functions. The is the reverse
-  order versus what one would normally expect (left-to-right rather than
-  right-to-left).
-
-  ## Examples
-
-  iex> sum_plus_one = compose_list([&(&1 + 1), &Enum.sum/1])
-  ...> sum_plus_one.([1, 2, 3])
-  7
-
-  """
-  @spec compose_list([fun]) :: fun
-  defpartial compose_list(func_list) do
-    List.foldr(func_list, &id/1, &compose/2)
   end
 end
