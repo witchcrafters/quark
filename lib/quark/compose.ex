@@ -18,7 +18,6 @@ defmodule Quark.Compose do
 
   import Quark.SKI
 
-  import Quark.Partial
   import Quark.Curry
 
   @doc ~S"""
@@ -32,7 +31,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose(fun, fun) :: any
-  defpartial compose(g, f) do
+  def compose(g, f) do
     fn x ->
       x
       |> curry(f).()
@@ -50,8 +49,8 @@ defmodule Quark.Compose do
       7
 
   """
-  @spec compose_list([fun]) :: fun
-  defpartial compose_list(func_list), do: func_list |> List.foldr(&id/1, &compose/2)
+  @spec compose([fun]) :: fun
+  def compose(func), do: func |> List.foldr(&id/1, &compose/2)
 
   @doc ~S"""
   Infix compositon operator
@@ -83,7 +82,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose_forward(fun, fun) :: fun
-  defpartial compose_forward(f, g) do
+  def compose_forward(f, g) do
     compose(g, f)
   end
 
@@ -117,13 +116,13 @@ defmodule Quark.Compose do
 
   ## Examples
 
-      iex> sum_plus_one = compose_list_forward([&Enum.sum/1, &(&1 + 1)])
+      iex> sum_plus_one = compose_forward([&Enum.sum/1, &(&1 + 1)])
       ...> sum_plus_one.([1, 2, 3])
       7
 
   """
-  @spec compose_list_forward([fun]) :: fun
-  defpartial compose_list_forward(func_list) do
-    List.foldl(func_list, &id/1, &compose/2)
+  @spec compose_forward([fun]) :: fun
+  def compose_forward(func) do
+    List.foldl(func, &id/1, &compose/2)
   end
 end
