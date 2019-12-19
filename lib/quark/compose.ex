@@ -50,7 +50,7 @@ defmodule Quark.Compose do
 
   """
   @spec compose([fun]) :: fun
-  def compose(func), do: func |> List.foldr(&id/1, &compose/2)
+  def compose(funcs) when is_list(funcs), do: funcs |> List.foldr(&id/1, &compose/2)
 
   @doc ~S"""
   Infix compositon operator
@@ -122,7 +122,5 @@ defmodule Quark.Compose do
 
   """
   @spec compose_forward([fun]) :: fun
-  def compose_forward(func) do
-    List.foldl(func, &id/1, &compose/2)
-  end
+  def compose_forward(funcs) when is_list(funcs), do: funcs |> List.foldl(&id/1, &compose/2)
 end
