@@ -17,5 +17,5 @@ jobs:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
       - run: MIX_ENV=test mix deps.get
-      - run: MIX_ENV=test mix text
+      - run: MIX_ENV=test mix test
       - run: MIX_ENV=test mix credo --strict
