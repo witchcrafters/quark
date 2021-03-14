@@ -75,7 +75,7 @@ defmodule Quark.SKI do
 
   """
   @spec second(any, any) :: any
-  defpartial second(a, b), do: b
+  defpartial second(_a, b), do: b
 
   @doc ~S"""
   The "substitution" combinator. Applies the last argument to the first two,

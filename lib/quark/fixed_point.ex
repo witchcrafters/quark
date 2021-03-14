@@ -48,7 +48,7 @@ defmodule Quark.FixedPoint do
       ...> factorial.(9)
       362880
 
-   """
+  """
   @spec y(fun) :: fun
   defpartial y(fun) do
     (fn x -> x.(x) end).(fn y ->

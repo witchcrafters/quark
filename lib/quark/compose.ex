@@ -72,7 +72,7 @@ defmodule Quark.Compose do
   def g <|> f, do: compose(g, f)
 
   @doc ~S"""
-  Function composition, from the back of the list to the front
+  Function composition, from the head to tail (left-to-right)
 
   ## Examples
 
@@ -110,9 +110,7 @@ defmodule Quark.Compose do
   def f <~> g, do: compose_forward(f, g)
 
   @doc ~S"""
-  Compose functions, from the head of the list of functions. The is the reverse
-  order versus what one would normally expect (left-to-right rather than
-  right-to-left).
+  Compose functions, from the head of the list of functions.
 
   ## Examples
 
