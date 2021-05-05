@@ -83,5 +83,5 @@
 
   in
     commands {
-      quality = cmd "Run all tests, linters, and so on" "MIX_ENV=test ${mix} quailty";
+      quality = cmd "Run all tests, linters, and so on" "MIX_ENV=test ${mix} quality";
     }
