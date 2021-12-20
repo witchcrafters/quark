@@ -1,45 +1,22 @@
- let
-  sources  = import ./nix/sources.nix;
-  commands = import ./nix/commands.nix;
-
-  nixos    = import sources.nixpkgs  {};
-  darwin   = import sources.darwin   {};
-  unstable = import sources.unstable {};
-
-  pkgs  = if darwin.stdenv.isDarwin then darwin else nixos;
-  tasks = commands {
-    inherit pkgs;
-    inherit unstable;
-  };
-
-  deps = {
-    common =
-      [  pkgs.niv
-      ];
-
-    elixir =
-      [ unstable.elixir
-      ];
-
-    platform =
-      if pkgs.stdenv.isDarwin then
-        [ unstable.darwin.apple_sdk.frameworks.CoreServices
-          unstable.darwin.apple_sdk.frameworks.Foundation
-        ]
-      else if pkgs.stdenv.isLinux then
-        [ pkgs.inotify-tools
-        ]
-      else
-        [];
-  };
-in
-
-pkgs.mkShell {
-  name = "Quark";
-  nativeBuildInputs = builtins.concatLists [
-    deps.common 
-    deps.elixir
-    deps.platform
-    tasks
-  ];
+let
+  nixpkgs = import (fetchTarball {
+    # For compiled binary, run
+    # `cachix use jechol`
+    url = "https://github.com/jechol/nixpkgs/archive/otp24-no-jit.tar.gz";
+    sha256 = "sha256:01n9hn9v7w9kgcd4zipf08bg9kskmpm7sp7f8z3yawk2c0w7q2kl";
+  }) { };
+  platform = if nixpkgs.stdenv.isDarwin then [
+    nixpkgs.darwin.apple_sdk.frameworks.CoreServices
+    nixpkgs.darwin.apple_sdk.frameworks.Foundation
+  ] else if nixpkgs.stdenv.isLinux then
+    [ nixpkgs.inotify-tools ]
+  else
+    [ ];
+in nixpkgs.mkShell {
+  buildInputs = with nixpkgs;
+    [
+      # OTP
+      erlang
+      elixir
+    ] ++ platform;
 }
