@@ -25,6 +25,10 @@ defmodule Quark.Mixfile do
           "credo --strict"
         ]
       ],
+      
+      preferred_cli_env: [
+        quality: :test
+      ],
 
       deps: [
         {:credo,    "~> 1.5",  only: [:dev, :test], runtime: false},
