@@ -7,7 +7,7 @@ defmodule Quark.Mixfile do
       name: "Quark",
 
       description: "Common combinators for Elixir",
-      version: "2.3.1",
+      version: "2.3.2",
       elixir:  "~> 1.11",
 
       package: [
@@ -24,6 +24,10 @@ defmodule Quark.Mixfile do
           "test",
           "credo --strict"
         ]
+      ],
+      
+      preferred_cli_env: [
+        quality: :test
       ],
 
       deps: [
