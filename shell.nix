@@ -1,9 +1,8 @@
 let
   nixpkgs = import (fetchTarball {
-    # For compiled binary, run
-    # `cachix use jechol`
-    url = "https://github.com/jechol/nixpkgs/archive/otp24-no-jit.tar.gz";
-    sha256 = "sha256:01n9hn9v7w9kgcd4zipf08bg9kskmpm7sp7f8z3yawk2c0w7q2kl";
+    # Run `cachix use jechol` to use compiled binary cache.
+    url = "https://github.com/jechol/nixpkgs/archive/21.11-otp24-no-jit.tar.gz";
+    sha256 = "sha256:1lka707hrnkp70vny99m9fmp4a8136vl7addmpfsdvkwb81d1jk9";
   }) { };
   platform = if nixpkgs.stdenv.isDarwin then [
     nixpkgs.darwin.apple_sdk.frameworks.CoreServices
