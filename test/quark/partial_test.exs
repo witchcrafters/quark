@@ -3,8 +3,10 @@ defmodule Quark.PartialTest do
   import Quark.Partial
 
   defpartial one(), do: 1
+  defpartial two, do: 2
   test "creates zero arity functions" do
     assert one() == 1
+    assert two() == 2
   end
 
   defpartial minus(a, b, c), do: a - b - c

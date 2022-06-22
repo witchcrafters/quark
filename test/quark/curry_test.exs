@@ -22,4 +22,12 @@ defmodule Quark.CurryTest do
     below10 = minus().(10)
     assert below10.(9) == 1
   end
+
+  defcurry one(), do: 1
+  defcurry two, do: 2
+
+  test "supports zero arity" do
+    assert one() == 1
+    assert two == 2
+  end
 end
