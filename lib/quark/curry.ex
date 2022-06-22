@@ -100,4 +100,5 @@ defmodule Quark.Curry do
   end
 
   defp wrap([], body), do: body
+  defp wrap(nil, body), do: body
 end

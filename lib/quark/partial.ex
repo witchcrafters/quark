@@ -48,7 +48,11 @@ defmodule Quark.Partial do
       #=> 3
 
   """
-  defmacro defpartial({fun_name, ctx, args}, do: body) do
+  defmacro defpartial({fun_name, ctx, nil}, do: body), do: defpartial_quote({fun_name, ctx, []}, do: body)
+
+  defmacro defpartial({fun_name, ctx, args}, do: body), do: defpartial_quote({fun_name, ctx, args}, do: body)
+
+  defp defpartial_quote({fun_name, ctx, args}, do: body) do
     quote do
       defcurry unquote({fun_name, ctx, args}), do: unquote(body)
       unquote do: Enum.map(args_scan(args), &rehydrate(fun_name, ctx, &1))
